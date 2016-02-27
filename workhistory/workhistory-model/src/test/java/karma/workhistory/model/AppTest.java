@@ -1,4 +1,4 @@
-package org.workhistory.dao;
+package karma.workhistory.model;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
