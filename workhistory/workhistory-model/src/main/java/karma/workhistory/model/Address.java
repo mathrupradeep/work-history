@@ -6,14 +6,18 @@ package karma.workhistory.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * @author pradeep
  */
+@Entity
+@Table(name = "address")
 public class Address implements Serializable {
 
     /**
@@ -30,7 +34,7 @@ public class Address implements Serializable {
 
     @Id
     @Column(name = "id")
-    private String id;
+    private Long id;
 
     @Column(name = "first_line")
     private String firstLine;
@@ -84,7 +88,7 @@ public class Address implements Serializable {
     /**
      * @return the id
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -144,7 +148,7 @@ public class Address implements Serializable {
      * @param id
      *            the id to set
      */
-    public void setId(final String id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 

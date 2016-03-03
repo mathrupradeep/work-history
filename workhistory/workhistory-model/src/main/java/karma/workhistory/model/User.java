@@ -1,11 +1,15 @@
 package karma.workhistory.model;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,7 +30,7 @@ public class User implements Serializable {
 
     @Id
     @Column(name = "id")
-    private String id;
+    private Long id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -40,14 +44,18 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "company_id")
-    private String companyId;
-
     @Column(name = "user_type")
     private String userType;
 
     @Column(name = "birth_date")
     private Date birthDate;
+
+    @Column(name = "profile_picture")
+    private Blob profilePicture;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id")
+    private Company company;
 
     /**
      * @return the birthDate
@@ -57,10 +65,10 @@ public class User implements Serializable {
     }
 
     /**
-     * @return the companyId
+     * @return the company
      */
-    public String getCompanyId() {
-        return companyId;
+    public Company getCompany() {
+        return company;
     }
 
     /**
@@ -80,7 +88,7 @@ public class User implements Serializable {
     /**
      * @return the id
      */
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -99,6 +107,13 @@ public class User implements Serializable {
     }
 
     /**
+     * @return the profilePicture
+     */
+    public Blob getProfilePicture() {
+        return profilePicture;
+    }
+
+    /**
      * @return the userType
      */
     public String getUserType() {
@@ -114,11 +129,11 @@ public class User implements Serializable {
     }
 
     /**
-     * @param companyId
-     *            the companyId to set
+     * @param company
+     *            the company to set
      */
-    public void setCompanyId(final String companyId) {
-        this.companyId = companyId;
+    public void setCompany(final Company company) {
+        this.company = company;
     }
 
     /**
@@ -141,7 +156,7 @@ public class User implements Serializable {
      * @param id
      *            the id to set
      */
-    public void setId(final String id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -159,6 +174,14 @@ public class User implements Serializable {
      */
     public void setPassword(final String password) {
         this.password = password;
+    }
+
+    /**
+     * @param profilePicture
+     *            the profilePicture to set
+     */
+    public void setProfilePicture(final Blob profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
     /**
