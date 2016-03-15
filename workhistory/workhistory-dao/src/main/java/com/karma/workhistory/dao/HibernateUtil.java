@@ -1,4 +1,4 @@
-package karma.workhistory.dao;
+package com.karma.workhistory.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

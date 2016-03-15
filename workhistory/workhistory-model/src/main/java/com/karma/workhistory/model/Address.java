@@ -1,7 +1,7 @@
 /**
  *
  */
-package karma.workhistory.model;
+package com.karma.workhistory.model;
 
 import java.io.Serializable;
 
