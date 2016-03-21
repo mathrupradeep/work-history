@@ -25,6 +25,7 @@
     <modules>
         <module>workhistory-dao</module>
         <module>workhistory-model</module>
+        <module>workhistory-service</module>
         <module>workhistory-web</module>
     </modules>
     <build>
