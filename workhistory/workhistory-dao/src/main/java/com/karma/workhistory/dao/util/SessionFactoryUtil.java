@@ -1,10 +1,10 @@
-package com.karma.workhistory.dao;
+package com.karma.workhistory.dao.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class HibernateUtil {
+public class SessionFactoryUtil {
 
 	@Autowired
 	private static SessionFactory sessionFactory;
