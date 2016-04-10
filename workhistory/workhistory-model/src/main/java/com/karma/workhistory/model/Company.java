@@ -41,8 +41,8 @@ public class Company implements Serializable {
     @Column(name = "alias")
     private String alias;
 
-    @Column(name = "sing_up_date")
-    private Date singUpDate;
+    @Column(name = "sign_up_date")
+    private Date signUpDate;
 
     @Column(name = "logo")
     private Blob logo;
@@ -99,7 +99,7 @@ public class Company implements Serializable {
      * @return the singUpDate
      */
     public Date getSingUpDate() {
-        return singUpDate;
+        return signUpDate;
     }
 
     /**
@@ -162,7 +162,7 @@ public class Company implements Serializable {
      *            the singUpDate to set
      */
     public void setSingUpDate(final Date singUpDate) {
-        this.singUpDate = singUpDate;
+        this.signUpDate = singUpDate;
     }
 
     /**
