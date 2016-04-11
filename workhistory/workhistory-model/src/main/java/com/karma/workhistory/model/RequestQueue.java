@@ -28,8 +28,8 @@ public class RequestQueue implements Serializable {
     @Column(name = "start_date")
     private Date startDate;
 
-    @Column(name = "reliving_date")
-    private Date relivingDate;
+    @Column(name = "relieving_date")
+    private Date relievingDate;
 
     @Column(name = "employee_id")
     private String employeeId;
@@ -88,7 +88,7 @@ public class RequestQueue implements Serializable {
      * @return the relivingDate
      */
     public Date getRelivingDate() {
-        return relivingDate;
+        return relievingDate;
     }
 
     /**
@@ -157,7 +157,7 @@ public class RequestQueue implements Serializable {
      *            the relivingDate to set
      */
     public void setRelivingDate(final Date relivingDate) {
-        this.relivingDate = relivingDate;
+        this.relievingDate = relivingDate;
     }
 
     /**

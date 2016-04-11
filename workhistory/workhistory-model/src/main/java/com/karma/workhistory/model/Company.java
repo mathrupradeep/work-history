@@ -96,7 +96,7 @@ public class Company implements Serializable {
     }
 
     /**
-     * @return the singUpDate
+     * @return the signUpDate
      */
     public Date getSingUpDate() {
         return signUpDate;
