@@ -1,10 +1,7 @@
 package com.karma.workhistory.dao;
 
-import java.awt.SecondaryLoop;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -27,8 +24,9 @@ public class HibernateUtil<T, O> {
 
 		try {
 			session = getSession();
+			session.getTransaction().begin();
 			session.save(obj);
-			
+			session.getTransaction().commit();
 
 		} catch (Exception e) {
 			e.printStackTrace();
