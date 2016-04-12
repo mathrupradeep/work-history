@@ -98,7 +98,7 @@ public class Company implements Serializable {
     /**
      * @return the signUpDate
      */
-    public Date getSingUpDate() {
+    public Date getSignUpDate() {
         return signUpDate;
     }
 
@@ -158,11 +158,11 @@ public class Company implements Serializable {
     }
 
     /**
-     * @param singUpDate
-     *            the singUpDate to set
+     * @param signUpDate
+     *            the signUpDate to set
      */
-    public void setSingUpDate(final Date singUpDate) {
-        this.signUpDate = singUpDate;
+    public void setSignUpDate(final Date signUpDate) {
+        this.signUpDate = signUpDate;
     }
 
     /**
