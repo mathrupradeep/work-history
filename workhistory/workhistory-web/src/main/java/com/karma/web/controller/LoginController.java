@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.karma.workhistory.model.Transaction;
@@ -19,25 +20,25 @@ public class LoginController {
     private TransactionService transactionService;
     
     @RequestMapping(value = "/submitLoginDetails", method = RequestMethod.POST)
-    public ModelAndView submitLogin(@RequestParam("userName") String userName,@RequestParam("password") String password ) {
+    public @ResponseBody ModelAndView submitLogin(@RequestParam("userName") String userName,@RequestParam("password") String password ) {
 
             ModelAndView model = new ModelAndView();
             model.setViewName("login");
-            System.out.println(userName + password);
+            System.out.println(userName +" "+ password);
             
             Transaction t = new Transaction();
-            t.setId(3);
+            t.setId(5);
             transactionService.persistTransaction(t);
             return model;
 
 
     }
     
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/addCandidate", method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
 
           
-            return "login";
+            return "addCandidate";
 
     }
 }
