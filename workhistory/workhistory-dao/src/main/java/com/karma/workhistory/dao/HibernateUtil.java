@@ -44,14 +44,4 @@ public class HibernateUtil<T, O> {
 		getSession().delete(entity);
 	}
 
-	private T createObject(Class<T> type) {
-		try {
-			return type.newInstance();
-		} catch (Exception e) {
-
-			System.out.println(e);
-			return null;
-		}
-
-	}
 }
