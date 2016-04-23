@@ -40,6 +40,9 @@ public class User implements Serializable {
 
     @Column(name = "email_id")
     private String emailId;
+    
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
     @Column(name = "password")
     private String password;
@@ -49,7 +52,7 @@ public class User implements Serializable {
 
     @Column(name = "birth_date")
     private Date birthDate;
-
+    
     @Column(name = "profile_picture")
     private Blob profilePicture;
 
@@ -191,5 +194,13 @@ public class User implements Serializable {
     public void setUserType(final String userType) {
         this.userType = userType;
     }
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
 }

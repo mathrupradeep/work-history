@@ -1,9 +1,12 @@
 package com.karma.workhistory.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.googlecode.genericdao.search.Search;
 import com.karma.workhistory.dao.HibernateUtil;
 import com.karma.workhistory.model.User;
 import com.karma.workhistory.service.util.EmailValidator;
@@ -17,7 +20,8 @@ public class UserService {
 	@Transactional
 	public String ddUser(User user) {
 		// validate the fields in user
-		boolean valid = true;
+		boolean valid = true; 
+		String result = null;
 		// if(user.getPassword().isEmpty() || user.getPassword().length()<8 ||
 		// user.getFirstName().isEmpty() || user.getLastName().isEmpty() ||
 		// user.getBirthDate() == null || user.getUserType().isEmpty())
@@ -29,12 +33,25 @@ public class UserService {
 
 			if (valid) {
 		
+				Search serachCriteria = new Search(User.class);
+				serachCriteria.addFilterEqual("emailId", user.getEmailId());
+				serachCriteria.addFilterEqual("phoneNumber", user.getPhoneNumber());
 				
-				hibernateUtil.persistOrUpdate(User.class, user);
-			}
+				List<User> object = hibernateUtil.search(serachCriteria);
+				if(object == null){
+					try{
+						hibernateUtil.persistOrUpdate(User.class, user);
+					}
+					catch(Exception e){
+						e.printStackTrace();
+						result = e.getMessage();
+					}
+					
+				}
+			} 
 			
 		}
-		return "";
+		return result;
 	}
 
 }
