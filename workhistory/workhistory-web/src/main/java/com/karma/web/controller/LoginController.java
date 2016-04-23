@@ -41,7 +41,7 @@ public class LoginController {
     public ModelAndView callHi(@RequestParam("userName") String userName,@RequestParam("password") String password ) {
 
             ModelAndView model = new ModelAndView();
-            model.setViewName("Candidate");
+            model.setViewName("candidate");
             System.out.println(userName + password);
             return model;
 
