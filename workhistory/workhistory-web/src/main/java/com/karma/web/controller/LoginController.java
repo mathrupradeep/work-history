@@ -22,22 +22,29 @@ public class LoginController {
     public ModelAndView submitLogin(@RequestParam("userName") String userName,@RequestParam("password") String password ) {
 
             ModelAndView model = new ModelAndView();
-            model.setViewName("login");
+            model.setViewName("hello");
             System.out.println(userName + password);
-            
-            Transaction t = new Transaction();
-            t.setId(3);
-            transactionService.persistTransaction(t);
             return model;
 
 
     }
     
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login")
     public String printWelcome(ModelMap model) {
 
           
             return "login";
+
+    }
+    
+    @RequestMapping(value = "/callHi", method = RequestMethod.POST)
+    public ModelAndView callHi(@RequestParam("userName") String userName,@RequestParam("password") String password ) {
+
+            ModelAndView model = new ModelAndView();
+            model.setViewName("Candidate");
+            System.out.println(userName + password);
+            return model;
+
 
     }
 }

@@ -10,23 +10,31 @@ import com.karma.workhistory.service.util.EmailValidator;
 
 @Service("candidateService")
 public class UserService {
-	
+
 	@Autowired
 	private HibernateUtil<User, User> hibernateUtil;
-	
+
 	@Transactional
-	public boolean addUser(User user){
-		//validate the fields in user
-		boolean valid= true;
-		if(user.getPassword().isEmpty() || user.getPassword().length()<8 || user.getFirstName().isEmpty() || user.getLastName().isEmpty() || user.getBirthDate() == null || user.getUserType().isEmpty())
-				valid = false;
-		if(!EmailValidator.validate(user.getEmailId()))
-				valid = false;
+	public String ddUser(User user) {
+		// validate the fields in user
+		boolean valid = true;
+		// if(user.getPassword().isEmpty() || user.getPassword().length()<8 ||
+		// user.getFirstName().isEmpty() || user.getLastName().isEmpty() ||
+		// user.getBirthDate() == null || user.getUserType().isEmpty())
+		if (user.getPassword().isEmpty() || user.getPassword().length() < 8 || user.getUserType().isEmpty()) {
+			valid = false;
+		}
+		if (!EmailValidator.validate(user.getEmailId())) {
+			valid = false;
+
+			if (valid) {
+		
+				
+				hibernateUtil.persistOrUpdate(User.class, user);
+			}
 			
-		if(valid)
-			hibernateUtil.persistSaveOrUpdate(User.class, user);
-		return true;
+		}
+		return "";
 	}
-	
 
 }

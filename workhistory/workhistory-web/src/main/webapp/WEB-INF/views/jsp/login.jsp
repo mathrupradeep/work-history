@@ -8,8 +8,8 @@
 </head>
 <body>
 
-<form method="post" action="/workhistory-web/submitLoginDetails">
-</br>
+<form method="post" id="loginForm">
+<br>
 <h3>
 	
 	user name &nbsp;<input type="text" name="userName" > <br>
@@ -19,10 +19,26 @@
    Phone Number  &nbsp; <input type="text" name="phonenumber"> <br>
     -->
    
-   </br>
-   <input type="submit" value="Add Candidate">
+   <br>
+   <input type="submit" value="Add Candidate" onclick="callSubmit()">
+   <input type="submit" value="hi" onclick="callHi()">
    <input type="reset" value="Clear">
 </h3>
-
+</form>
 </body>
+<script>
+function callSubmit(){
+	alert("hi");
+	document.forms[0].action = "${pageContext.request.contextPath}/submitLoginDetails";
+	document.forms[0].submit();
+}
+
+function callHi(){
+	alert("bye");
+	document.forms[0].action = "${pageContext.request.contextPath}/callHi";
+	document.forms[0].submit();
+}
+
+
+</script>
 </html>
