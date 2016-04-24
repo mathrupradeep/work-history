@@ -15,7 +15,8 @@
 		</br>
 		<h3>
 			E-Mail ID &nbsp;<input type="text" name="mailId"> <br>
-			Phone Number &nbsp; <input type="text" name="phoneNumber"> <input
+			Phone Number &nbsp; </br>
+			<input type="text" name="phoneNumber"> <input
 				type="submit" value="Add Candidate" onclick="callSubmit()">
 				<input type="reset" value="Clear">
 		</h3>
@@ -23,8 +24,7 @@
 </body>
 <script>
 	function callSubmit() {
-		alert("hi");
-		document.forms[0].action = "${pageContext.request.contextPath}/submitCandidateDetails";
+		document.forms[0].action = "${pageContext.request.contextPath}/submitCandidateBasicInfo";
 		document.forms[0].submit();
 	}
 

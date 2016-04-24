@@ -50,7 +50,7 @@ public class CandidateController {
 
 	            ModelAndView model = new ModelAndView();
 	           // System.out.println(mailId + phoneNumber);
-	            model.setViewName("Candidate");
+	            model.setViewName("CandidateDetails");
 	            return model;
 
 

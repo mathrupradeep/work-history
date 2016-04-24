@@ -24,7 +24,7 @@
 <h3>
 	First Name &nbsp;<input type="text" name="firstname"> <br>
 	Last Name  &nbsp; <input type="text" name="lastname"> <br>
-	DOB  &nbsp; <input type="calendar" name="dob"> <br>
+	DOB  &nbsp;  <input type="text" id="datepicker" name="dob"> <br>
 	Primary Phone Number &nbsp; <input type="text" name="primaryphonenumber">  // "i"  if the number is incorrect, contact HR1  <br> 
 	Select the most recent previous employer &nbsp <input type="text" name="mrpemployer" >  //drop down box  <br> 
     EMP ID  &nbsp; <input type="text" name="empid"> <br>
@@ -32,11 +32,15 @@
 	Relieving Date &nbsp; <input type="text" id="datepicker" name="relievingdate"> <br>
 	Upload Relieving letter in pdf format &nbsp; <input type="" name="rletterpdf" >  // file upload option  </br>
    </br>
-   <input type="submit" value="Submit" onclick=prompt("info once submited cant be edited")>
+   <input type="submit" value="Submit" onclick="submitCandidateDetails()">
    <input type="reset" value="Clear">
 </h3>
 </form>
-
-
 </body>
+<script>
+function submitCandidateDetails() {
+	document.forms[0].action = "${pageContext.request.contextPath}/submitCandidateDetails";
+	document.forms[0].submit();
+}
+</script>
 </html>

@@ -36,15 +36,4 @@ public class LoginController {
             return "login";
 
     }
-    
-    @RequestMapping(value = "/callHi", method = RequestMethod.POST)
-    public ModelAndView callHi(@RequestParam("userName") String userName,@RequestParam("password") String password ) {
-
-            ModelAndView model = new ModelAndView();
-            model.setViewName("candidate");
-            System.out.println(userName + password);
-            return model;
-
-
-    }
 }
