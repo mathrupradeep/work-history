@@ -35,7 +35,7 @@ public class CandidateController {
 	            candidate.setEmailId(mailId);
 	            candidate.setPhoneNumber(phoneNumber);
 	            String message = candiateService.addCandidate(candidate);
-	            if(message.isEmpty())
+	            if(message == null )
 	            	message= "Candidate Added Sucessfully";
 	            else
 	            	message = "Error adding candidate";

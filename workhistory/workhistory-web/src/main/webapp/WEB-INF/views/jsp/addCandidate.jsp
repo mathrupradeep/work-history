@@ -11,14 +11,19 @@
 </head>
 <body>
 
+	<div>
+		<c:if test="${not empty msg}">
+			 ${msg}
+		</c:if>
+	</div>
+
 	<form name="addCandidateForm" id="candidateForm" method="post">
 		</br>
 		<h3>
 			E-Mail ID &nbsp;<input type="text" name="mailId"> <br>
-			Phone Number &nbsp; </br>
-			<input type="text" name="phoneNumber"> <input
+			Phone Number &nbsp; </br> <input type="text" name="phoneNumber"> <input
 				type="submit" value="Add Candidate" onclick="callSubmit()">
-				<input type="reset" value="Clear">
+			<input type="reset" value="Clear">
 		</h3>
 	</form>
 </body>
@@ -27,7 +32,5 @@
 		document.forms[0].action = "${pageContext.request.contextPath}/submitCandidateBasicInfo";
 		document.forms[0].submit();
 	}
-
-	
 </script>
 </html>
