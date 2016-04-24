@@ -38,6 +38,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.karma.workhistory.model.Transaction</value>
+                <value>com.karma.workhistory.model.User</value>
 			</list>
 		</property>
 	</bean>

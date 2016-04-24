@@ -56,9 +56,9 @@ public class User implements Serializable {
     @Column(name = "profile_picture")
     private Blob profilePicture;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+/*    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
-    private Company company;
+    private Company company;*/
 
     /**
      * @return the birthDate
@@ -69,10 +69,10 @@ public class User implements Serializable {
 
     /**
      * @return the company
-     */
+     
     public Company getCompany() {
         return company;
-    }
+    }*/
 
     /**
      * @return the emailId
@@ -134,11 +134,12 @@ public class User implements Serializable {
     /**
      * @param company
      *            the company to set
-     */
+     
     public void setCompany(final Company company) {
         this.company = company;
     }
-
+	*/
+    
     /**
      * @param emailId
      *            the emailId to set

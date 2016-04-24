@@ -11,16 +11,16 @@ import com.karma.workhistory.dao.HibernateUtil;
 import com.karma.workhistory.model.User;
 import com.karma.workhistory.service.util.EmailValidator;
 
-@Service("candidateService")
+@Service("userService")
 public class UserService {
 
 	@Autowired
 	private HibernateUtil<User, User> hibernateUtil;
 
 	@Transactional
-	public String ddUser(User user) {
+	public String addUser(User user) {
 		// validate the fields in user
-		boolean valid = true; 
+		boolean valid = true;
 		String result = null;
 		// if(user.getPassword().isEmpty() || user.getPassword().length()<8 ||
 		// user.getFirstName().isEmpty() || user.getLastName().isEmpty() ||
@@ -32,24 +32,23 @@ public class UserService {
 			valid = false;
 
 			if (valid) {
-		
+
 				Search serachCriteria = new Search(User.class);
 				serachCriteria.addFilterEqual("emailId", user.getEmailId());
 				serachCriteria.addFilterEqual("phoneNumber", user.getPhoneNumber());
-				
+
 				List<User> object = hibernateUtil.search(serachCriteria);
-				if(object == null){
-					try{
+				if (object == null) {
+					try {
 						hibernateUtil.persistOrUpdate(User.class, user);
-					}
-					catch(Exception e){
+					} catch (Exception e) {
 						e.printStackTrace();
 						result = e.getMessage();
 					}
-					
+
 				}
-			} 
-			
+			}
+
 		}
 		return result;
 	}
