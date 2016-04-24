@@ -20,12 +20,23 @@ public class CandidateController {
 	    }
 
 	 
-	 @RequestMapping(value = "/submitCandidateDetails")
-	    public ModelAndView submitCandidateDetails(@RequestParam("mailId") String mailId,@RequestParam("phoneNumber") String phoneNumber ) {
+	 @RequestMapping(value = "/submitCandidateBasicInfo")
+	    public ModelAndView submitCandidateBasicInfo(@RequestParam("mailId") String mailId,@RequestParam("phoneNumber") String phoneNumber ) {
 
 	            ModelAndView model = new ModelAndView();
 	            System.out.println(mailId + phoneNumber);
-	            model.setViewName(" ");
+	            model.setViewName("addCandidate");
+	            return model;
+
+
+	    }
+	 
+	 @RequestMapping(value = "/submitCandidateDetails")
+	    public ModelAndView submitCandidateDetails() {
+
+	            ModelAndView model = new ModelAndView();
+	           // System.out.println(mailId + phoneNumber);
+	            model.setViewName("Candidate");
 	            return model;
 
 

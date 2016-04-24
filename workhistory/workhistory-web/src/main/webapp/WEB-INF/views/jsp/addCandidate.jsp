@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<form name="candidateForm" id="candidateForm" method="post">
+	<form name="addCandidateForm" id="candidateForm" method="post">
 		</br>
 		<h3>
 			E-Mail ID &nbsp;<input type="text" name="mailId"> <br>
