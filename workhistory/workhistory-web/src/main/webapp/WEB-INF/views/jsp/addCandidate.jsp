@@ -18,7 +18,7 @@
 	</div>
 
 	<form name="addCandidateForm" id="candidateForm" method="post">
-		</br>
+		<br>
 		<h3>
 			E-Mail ID &nbsp;<input type="text" name="mailId"> <br>
 			Phone Number &nbsp; </br> <input type="text" name="phoneNumber"> <input
