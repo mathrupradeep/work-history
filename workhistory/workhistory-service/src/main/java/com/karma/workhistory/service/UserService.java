@@ -31,9 +31,10 @@ public class UserService {
 		}
 		if (!EmailValidator.validate(user.getEmailId())) {
 			valid = false;
-
+		}
 			if (valid) {
-
+				hibernateUtil.setSessionFactory(hibernateUtil.getsessionFactory());
+				System.out.println(hibernateUtil.getsessionFactory());
 				Search serachCriteria = new Search(User.class);
 				serachCriteria.addFilterEqual("emailId", user.getEmailId());
 				serachCriteria.addFilterEqual("phoneNumber",
@@ -42,7 +43,7 @@ public class UserService {
 				List<User> object = hibernateUtil.search(serachCriteria);
 				if (object == null) {
 					try {
-						hibernateUtil.persistOrUpdate(User.class, user);
+						hibernateUtil.save(User.class, user);
 					} catch (Exception e) {
 						e.printStackTrace();
 						result = e.getMessage();
@@ -51,7 +52,6 @@ public class UserService {
 				}
 			}
 
-		}
 		return result;
 	}
 
@@ -69,7 +69,7 @@ public class UserService {
 			List<User> object = hibernateUtil.search(serachCriteria);
 			if (object == null) {*/
 				try {
-					hibernateUtil.persistOrUpdate(User.class, user);
+					hibernateUtil.save(User.class, user);
 				} catch (Exception e) {
 					System.out.println("Exception from persist or update ");
 					e.printStackTrace();

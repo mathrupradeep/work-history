@@ -16,6 +16,6 @@ public class TransactionService {
 	
 	@Transactional
 	public void persistTransaction(Transaction item){
-		hibernateUtil.persistOrUpdate(Transaction.class,item);
+		//hibernateUtil.persistOrUpdate(Transaction.class,item);
 	}
 }

@@ -4,6 +4,9 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 
 import com.googlecode.genericdao.dao.hibernate.GeneralDAO;
@@ -11,16 +14,28 @@ import com.googlecode.genericdao.dao.hibernate.GeneralDAOImpl;
 import com.googlecode.genericdao.search.ISearch;
 
 @Repository("hibernateUtil")
+@DependsOn("sessionFactory")
 public class HibernateUtil<T, O> extends GeneralDAOImpl implements GeneralDAO{
 
-	@Autowired
+	@Autowired(required=true)
 	SessionFactory sessionFactory;
+	
+	LocalSessionFactoryBean l;
+	
+	public HibernateUtil(){
+		super.setSessionFactory(sessionFactory);
+		sessionFactory= l.getObject();
+	}
 
 	protected Session getSession() {
 		return sessionFactory.openSession();
 	}
+	
+	public SessionFactory getsessionFactory() {
+		return sessionFactory;
+	}
 
-	public void persistOrUpdate(Class<T> type, O obj) {
+	/*public void persistOrUpdate(Class<T> type, O obj) {
 		if (obj == null) {
 			throw new NullPointerException("Obj is null");
 		}

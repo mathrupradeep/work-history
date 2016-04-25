@@ -20,7 +20,6 @@ public class CandidateService {
 	}
 
 	public String addCandidateDetails(User candidate) {
-		// TODO Auto-generated method stub
 		return userService.addDetails(candidate);
 	}
 
