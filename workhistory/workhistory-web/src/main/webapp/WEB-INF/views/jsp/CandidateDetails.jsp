@@ -12,25 +12,33 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script>
   $(function() {
-    $( "#datepicker" ).datepicker();
+    $( "#DOBSelector" ).datepicker();
+    $( "#joiningDate" ).datepicker();
+    $( "#relievingDate" ).datepicker();
   });
   </script>
 </head>
 <body>
 
-<form name="candidateForm" method="get">
+<form name="candidateForm" method="post">
 </br>
 
+	<div>
+		<c:if test="${not empty msg}">
+			 ${msg}
+		</c:if>
+	</div>
+
 <h3>
-	First Name &nbsp;<input type="text" name="firstname"> <br>
-	Last Name  &nbsp; <input type="text" name="lastname"> <br>
-	DOB  &nbsp;  <input type="text" id="datepicker" name="dob"> <br>
-	Primary Phone Number &nbsp; <input type="text" name="primaryphonenumber">  // "i"  if the number is incorrect, contact HR1  <br> 
-	Select the most recent previous employer &nbsp <input type="text" name="mrpemployer" >  //drop down box  <br> 
-    EMP ID  &nbsp; <input type="text" name="empid"> <br>
-	Joining Date  &nbsp; <input type="text" id="datepicker" name="joiningdate"> <br>
-	Relieving Date &nbsp; <input type="text" id="datepicker" name="relievingdate"> <br>
-	Upload Relieving letter in pdf format &nbsp; <input type="" name="rletterpdf" >  // file upload option  </br>
+	First Name &nbsp;<input type="text" name="firstName"> <br>
+	Last Name  &nbsp; <input type="text" name="lastName"> <br>
+	DOB  &nbsp;  <input type="text" id="DOBSelector" name="DOB"> <br>
+	Primary Phone Number &nbsp; <input type="text" name="primaryPhoneNumber">  // "i"  if the number is incorrect, contact HR1  <br> 
+	Select the most recent previous employer &nbsp <input type="text" name="mostRecentEmployer" >  //drop down box  <br> 
+    EMP ID  &nbsp; <input type="text" name="empId"> <br>
+	Joining Date  &nbsp; <input type="text" id="joiningDate" name="joiningDate"> <br>
+	Relieving Date &nbsp; <input type="text" id="relievingDate" name="relievingDate"> <br>
+	Upload Relieving letter in PDF format &nbsp; <input type="file" id="relievingLetterPDF"  name="relievingLetterPDF" >  // file upload option  </br>
    </br>
    <input type="submit" value="Submit" onclick="submitCandidateDetails()">
    <input type="reset" value="Clear">

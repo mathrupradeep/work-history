@@ -25,7 +25,8 @@ public class UserService {
 		// if(user.getPassword().isEmpty() || user.getPassword().length()<8 ||
 		// user.getFirstName().isEmpty() || user.getLastName().isEmpty() ||
 		// user.getBirthDate() == null || user.getUserType().isEmpty())
-		if (user.getPassword().isEmpty() || user.getPassword().length() < 8 || user.getUserType().isEmpty()) {
+		if (user.getPassword().isEmpty() || user.getPassword().length() < 8
+				|| user.getUserType().isEmpty()) {
 			valid = false;
 		}
 		if (!EmailValidator.validate(user.getEmailId())) {
@@ -35,7 +36,8 @@ public class UserService {
 
 				Search serachCriteria = new Search(User.class);
 				serachCriteria.addFilterEqual("emailId", user.getEmailId());
-				serachCriteria.addFilterEqual("phoneNumber", user.getPhoneNumber());
+				serachCriteria.addFilterEqual("phoneNumber",
+						user.getPhoneNumber());
 
 				List<User> object = hibernateUtil.search(serachCriteria);
 				if (object == null) {
@@ -50,6 +52,32 @@ public class UserService {
 			}
 
 		}
+		return result;
+	}
+
+	@Transactional
+	public String addDetails(User user) {
+		// TODO Auto-generated method stub
+		boolean valid = true;
+		String result = null;
+		if (valid) {
+
+		/*	Search serachCriteria = new Search(User.class);
+			serachCriteria.addFilterEqual("firstName", user.getFirstName());
+			serachCriteria.addFilterEqual("lastName", user.getLastName() );
+
+			List<User> object = hibernateUtil.search(serachCriteria);
+			if (object == null) {*/
+				try {
+					hibernateUtil.persistOrUpdate(User.class, user);
+				} catch (Exception e) {
+					System.out.println("Exception from persist or update ");
+					e.printStackTrace();
+					result = e.getMessage();
+				}
+
+			}
+		/*}*/
 		return result;
 	}
 

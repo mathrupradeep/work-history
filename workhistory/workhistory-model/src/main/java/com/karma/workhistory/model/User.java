@@ -1,5 +1,6 @@
 package com.karma.workhistory.model;
 
+import java.io.File;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.util.Date;
@@ -7,6 +8,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -30,6 +33,7 @@ public class User implements Serializable {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE )
     private Long id;
 
     @Column(name = "first_name")
@@ -49,18 +53,79 @@ public class User implements Serializable {
 
     @Column(name = "user_type")
     private String userType;
+    
+    @Column(name = "most_recent_employer")
+    private String mostRecentEmployer;
+    
+    @Column(name = "emp_id")
+    private String empId;
 
     @Column(name = "birth_date")
     private Date birthDate;
     
+    @Column(name = "joining_date")
+    private Date joiningDate;
+    
+    @Column(name = "relieving_date")
+    private Date relievingDate;
+    
     @Column(name = "profile_picture")
     private Blob profilePicture;
+    
+    @Column(name = "relieving_letter_PDF")
+    private File relievingLetterPDF;
+    
+    
+    
+    
+    
+    
 
 /*    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company company;*/
 
-    /**
+    public String getMostRecentEmployer() {
+		return mostRecentEmployer;
+	}
+
+	public void setMostRecentEmployer(String mostRecentEmployer) {
+		this.mostRecentEmployer = mostRecentEmployer;
+	}
+
+	public String getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(String empId) {
+		this.empId = empId;
+	}
+
+	public Date getJoiningDate() {
+		return joiningDate;
+	}
+
+	public void setJoiningDate(Date joiningDate) {
+		this.joiningDate = joiningDate;
+	}
+
+	public Date getRelievingDate() {
+		return relievingDate;
+	}
+
+	public void setRelievingDate(Date relievingDate) {
+		this.relievingDate = relievingDate;
+	}
+
+	public File getRelievingLetterPDF() {
+		return relievingLetterPDF;
+	}
+
+	public void setRelievingLetterPDF(File relievingLetterPDF2) {
+		this.relievingLetterPDF = relievingLetterPDF2;
+	}
+
+	/**
      * @return the birthDate
      */
     public Date getBirthDate() {

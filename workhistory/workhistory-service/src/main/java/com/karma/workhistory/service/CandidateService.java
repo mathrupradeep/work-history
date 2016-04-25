@@ -18,4 +18,10 @@ public class CandidateService {
 		candidate.setUserType(UserType.valueOf("Candidate").toString());
 		return userService.addUser(candidate);
 	}
+
+	public String addCandidateDetails(User candidate) {
+		// TODO Auto-generated method stub
+		return userService.addDetails(candidate);
+	}
+
 }
