@@ -3,7 +3,12 @@ package com.karma.web.controller;
 import java.io.File;
 import java.util.Date;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,8 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.karma.workhistory.model.User;
 import com.karma.workhistory.service.CandidateService;
+import com.karma.workhistory.service.util.SendEmail;
 
 @Controller
+@Configuration
+@ComponentScan("com.karma.workhistory.*")
 public class CandidateController {
 
 	@Autowired
@@ -29,16 +37,20 @@ public class CandidateController {
 	@RequestMapping(value = "/submitCandidateBasicInfo")
 	public ModelAndView submitCandidateBasicInfo(
 			@RequestParam("mailId") String mailId,
-			@RequestParam("phoneNumber") String phoneNumber) {
+			@RequestParam("phoneNumber") String phoneNumber) throws AddressException, MessagingException {
 
 		ModelAndView model = new ModelAndView();
 		System.out.println(mailId + phoneNumber);
 		User candidate = new User();
+		SendEmail sendEmail = new SendEmail();
 		candidate.setEmailId(mailId);
 		candidate.setPhoneNumber(phoneNumber);
 		String message = candiateService.addCandidate(candidate);
-		if (message == null)
+		if (message == null){
 			message = "Candidate Added Sucessfully";
+			System.out.println("email id candidate.getEmailId()  "+candidate.getEmailId() + "  mailId "+mailId);
+			sendEmail.sendEmailFunction(mailId);
+		}
 		else
 			message = "Error adding candidate";
 		model.addObject("msg", message);
@@ -46,6 +58,7 @@ public class CandidateController {
 		return model;
 
 	}
+	
 	
 	@RequestMapping(value = "/fillInCandidateDetails")
 	public ModelAndView fillInCandidateDetails() {

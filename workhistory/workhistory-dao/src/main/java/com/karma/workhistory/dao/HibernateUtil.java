@@ -23,6 +23,7 @@ public class HibernateUtil<T, O> extends GeneralDAOImpl implements GeneralDAO{
 	LocalSessionFactoryBean l;
 	
 	public HibernateUtil(){
+	    
 	}
 
 	protected Session getSession() {
