@@ -20,11 +20,11 @@ public class HibernateUtil<T, O> extends GeneralDAOImpl implements GeneralDAO{
 	@Autowired(required=true)
 	SessionFactory sessionFactory;
 	
-	LocalSessionFactoryBean l;
+	/*LocalSessionFactoryBean l;
 	
 	public HibernateUtil(){
 	    
-	}
+	}*/
 
 	protected Session getSession() {
 		return sessionFactory.openSession();
