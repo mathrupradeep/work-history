@@ -33,8 +33,6 @@ public class UserService {
 			valid = false;
 		}
 			if (valid) {
-				hibernateUtil.setSessionFactory(hibernateUtil.getsessionFactory());
-				System.out.println(hibernateUtil.getsessionFactory());
 				Search serachCriteria = new Search(User.class);
 				serachCriteria.addFilterEqual("emailId", user.getEmailId());
 				serachCriteria.addFilterEqual("phoneNumber",
