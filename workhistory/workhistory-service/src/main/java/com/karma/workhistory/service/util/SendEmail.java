@@ -18,13 +18,13 @@ public class SendEmail {
 	Session mailSession;
 	MimeMessage emailMessage;
 
-	public void sendEmailFunction(String addressee) throws AddressException,
+	public void sendEmailFunction(User candidate) throws AddressException,
 			MessagingException {
 
 		SendEmail SendEmail = new SendEmail();
 
 		SendEmail.setMailServerProperties();
-		SendEmail.createEmailMessage(addressee);
+		SendEmail.createEmailMessage(candidate);
 		SendEmail.sendEmail();
 	}
 
@@ -40,12 +40,12 @@ public class SendEmail {
 
 	}
 
-	public void createEmailMessage(String addressee) throws AddressException,
+	public void createEmailMessage(User candidate) throws AddressException,
 			MessagingException {
 	    	
-	    	User candidate = new User();
+	    	//User candidate = new User();
 		//String[] toEmails = { "indianvicky91@gmail.com" };
-		String emailSubject = "Hey "+candidate.getFirstName() +" you have been added into the database";
+		String emailSubject = "Hey There, \n you have been added into the database";
 		String emailBody = "body part, This is an email sent by JavaMail api.";
 
 		mailSession = Session.getDefaultInstance(emailProperties, null);
@@ -53,8 +53,8 @@ public class SendEmail {
 
 		//for (int i = 0; i < toEmails.length; i++) {
 		System.out.println(" email id of entered candidate.getEmailId() "+candidate.getEmailId());
-		System.out.println(" email id of entered addressee addressee "+addressee);
-		emailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(addressee));
+		/* System.out.println(" email id of entered addressee addressee "+candidate.getEmailId());*/
+		emailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(candidate.getEmailId()));
 		//}
 
 		emailMessage.setSubject(emailSubject);

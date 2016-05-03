@@ -48,8 +48,7 @@ public class CandidateController {
 		String message = candiateService.addCandidate(candidate);
 		if (message == null){
 			message = "Candidate Added Sucessfully";
-			System.out.println("email id candidate.getEmailId()  "+candidate.getEmailId() + "  mailId "+mailId);
-			sendEmail.sendEmailFunction(mailId);
+			sendEmail.sendEmailFunction(candidate);
 		}
 		else
 			message = "Error adding candidate";
