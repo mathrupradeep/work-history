@@ -24,13 +24,66 @@ public class HibernateUtil<T, O> extends GeneralDAOImpl implements GeneralDAO{
 		return sessionFactory;
 	}
 	
+	@Override
 	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+		super.setSessionFactory(sessionFactory);
+	}
+	
+	
+	public void save(Class<T> type, O obj) {
+		if (obj == null) {
+			throw new NullPointerException("Obj is null");
+		}
+
+		Session session = null;
+
+		try {
+			session = getSession();
+			session.getTransaction().begin();
+			session.save(obj);
+			session.getTransaction().commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		finally {
+			if(session != null){
+					session.close();
+			}
+		}
+
+	}
+
+	
+	public void delete(Class<T> type, O obj) {
+		if (obj == null) {
+			throw new NullPointerException("Obj is null");
+		}
+
+		Session session = null;
+
+		try {
+			session = getSession();
+			session.getTransaction().begin();
+			session.delete(obj);
+			session.getTransaction().commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		finally {
+			if(session != null){
+					session.close();
+			}
+		}
+
 	}
 	
 	@PostConstruct
 	public void setupSessionFactoryToSuperClass(){
-		super.setSessionFactory(sessionFactory);	
+		super.setSessionFactory(sessionFactory);
 	}
 	
 }

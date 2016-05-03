@@ -1,7 +1,5 @@
 package com.karma.workhistory.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,8 +35,8 @@ public class UserService {
 				serachCriteria.addFilterEqual("emailId", user.getEmailId());
 				serachCriteria.addFilterEqual("phoneNumber",
 						user.getPhoneNumber());
-
-				List<User> object = hibernateUtil.search(serachCriteria);
+				hibernateUtil.setSessionFactory(hibernateUtil.getsessionFactory());
+				User object = (User) hibernateUtil.searchUnique(serachCriteria);
 				if (object == null) {
 					try {
 						hibernateUtil.save(User.class, user);

@@ -20,6 +20,8 @@ public class CandidateService {
 	}
 
 	public String addCandidateDetails(User candidate) {
+		candidate.setPassword(RandomPasswordGenerator.getRandomPassword(9));
+		candidate.setUserType(UserType.valueOf("Candidate").toString());
 		return userService.addDetails(candidate);
 	}
 
