@@ -45,8 +45,8 @@ public class SendEmail {
 	    	
 	    	//User candidate = new User();
 		//String[] toEmails = { "indianvicky91@gmail.com" };
-		String emailSubject = "Hey There, \n you have been added into the database";
-		String emailBody = "body part, This is an email sent by JavaMail api.";
+		String emailSubject = "Hey There, Your account has been created with Karma";
+		String emailBody = "\nThe details are: \n User Name: "+candidate.getEmailId()+"\nPassword: "+candidate.getPassword()+"\n";
 
 		mailSession = Session.getDefaultInstance(emailProperties, null);
 		emailMessage = new MimeMessage(mailSession);
