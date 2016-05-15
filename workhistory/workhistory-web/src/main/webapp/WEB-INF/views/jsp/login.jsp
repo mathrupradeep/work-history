@@ -18,7 +18,7 @@
 login page 
 	
 	user name &nbsp;<input type="text" name="userName" > <br>
-	password &nbsp;<input type="text" name="password" > <br>
+	password &nbsp;<input type="password" name="password" > <br>
    <br>
    <input type="submit" value="Add Candidate" onclick="submitLogin()">
    <input type="reset" value="Clear">

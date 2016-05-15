@@ -14,10 +14,10 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		String uri = request.getRequestURI();
-		if (!uri.endsWith("login") && !uri.endsWith("logout")) {
+		if (!uri.endsWith("login") && !uri.endsWith("logout") && !uri.equalsIgnoreCase("/workhistory-web/submitLoginDetails")) {
 			User userData = (User) request.getSession().getAttribute("LOGGEDIN_USER");
 			if (userData == null) {
-				response.sendRedirect("login.do");
+				response.sendRedirect("login");
 				return false;
 			}
 		}
