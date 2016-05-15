@@ -26,6 +26,7 @@
 	<mvc:interceptors>
 		<bean class="com.karma.web.controller.AuthenticationInterceptor" />
 	</mvc:interceptors>
+	
 	<mvc:annotation-driven />
 
 </beans>

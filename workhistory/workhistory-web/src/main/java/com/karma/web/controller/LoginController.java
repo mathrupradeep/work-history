@@ -15,32 +15,40 @@ import com.karma.workhistory.service.UserService;
 
 @Controller
 public class LoginController {
-	
+
 	@Autowired
 	UserService userService;
-    
-    @RequestMapping(value = "/submitLoginDetails", method = RequestMethod.POST)
-    public ModelAndView submitLogin(@RequestParam("userName") String userName,@RequestParam("password") String password,HttpServletRequest request ) {
 
-            ModelAndView model = new ModelAndView();
-            User user = userService.isValidUser(userName, password);
-            if(user != null){
-            	model.setViewName("login");
-            	model.addObject("message", "Login Successful");
-            	request.getSession().setAttribute("LOGGEDIN_USER", user);
-            }
-            else{
-            	model.setViewName("login");
-            	model.addObject("message", "Not a valid User");
-            }
-            return model;
+	@RequestMapping(value = "/submitLoginDetails", method = RequestMethod.POST)
+	public ModelAndView submitLogin(@RequestParam("userName") String userName,
+			@RequestParam("password") String password, HttpServletRequest request) {
 
+		ModelAndView model = new ModelAndView();
+		User user = userService.isValidUser(userName, password);
+		if (user != null) {
+			model.setViewName("login");
+			model.addObject("message", "Login Successful");
+			request.getSession().setAttribute("LOGGEDIN_USER", user);
+		} else {
+			model.setViewName("login");
+			model.addObject("message", "Not a valid User");
+		}
+		return model;
 
-    }
-    
-    @RequestMapping(value = "/login")
+	}
+
+	@RequestMapping(value = "/login")
     public String printWelcome(ModelMap model) {
             return "login";
+	}
 
-    }
+	@RequestMapping(value = "/logout")
+	public ModelAndView logout(HttpServletRequest request) {
+		ModelAndView model = new ModelAndView();
+		model.setViewName("login");
+		model.addObject("message", "Logout Successful");
+		request.getSession().invalidate();
+		return model;
+
+	}
 }

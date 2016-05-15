@@ -20,7 +20,7 @@ login page
 	user name &nbsp;<input type="text" name="userName" > <br>
 	password &nbsp;<input type="password" name="password" > <br>
    <br>
-   <input type="submit" value="Add Candidate" onclick="submitLogin()">
+   <input type="submit" value="Login" onclick="submitLogin()">
    <input type="reset" value="Clear">
 </h3>
 </form>
@@ -32,4 +32,5 @@ function submitLogin(){
 }
 
 </script>
+<%@ include file="logout.jsp" %>
 </html>
