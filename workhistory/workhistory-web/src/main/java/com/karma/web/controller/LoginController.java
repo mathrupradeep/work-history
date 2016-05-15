@@ -38,17 +38,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/login")
-    public String printWelcome(ModelMap model) {
+	public String printWelcome(ModelMap model) {
             return "login";
-	}
-
-	@RequestMapping(value = "/logout")
-	public ModelAndView logout(HttpServletRequest request) {
-		ModelAndView model = new ModelAndView();
-		model.setViewName("login");
-		model.addObject("message", "Logout Successful");
-		request.getSession().invalidate();
-		return model;
-
 	}
 }
