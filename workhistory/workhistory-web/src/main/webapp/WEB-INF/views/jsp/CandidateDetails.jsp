@@ -11,6 +11,15 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script>
+$(document).ready(function () {
+    $("#imagePic").mouseenter(function () {
+        $("#infoElement").show();
+    });
+    $("#imagePic").mouseleave(function () {
+        $("#infoElement").hide();
+    });
+});
+
   $(function() {
     $( "#DOBSelector" ).datepicker();
     $( "#joiningDate" ).datepicker();
@@ -35,7 +44,7 @@
 	First Name &nbsp;<input type="text" name="firstName"> <br>
 	Last Name  &nbsp; <input type="text" name="lastName"> <br>
 	DOB  &nbsp;  <input type="text" id="DOBSelector" name="DOB"> <br>
-	Primary Phone Number &nbsp; <input type="text" name="primaryPhoneNumber">  // "i"  if the number is incorrect, contact HR1  <br> 
+    Primary Phone Number &nbsp; <input type="text" name="primaryPhoneNumber"> <div id ="imagePic" > Put an image I here <div id="infoElement" >  if the number is incorrect, contact HR1 </div> </div> 
 	Select the most recent previous employer &nbsp <input type="text" name="mostRecentEmployer" >  //drop down box  <br><br><br> 
     
    <INPUT type="button" value="Add Row" onclick="addRow('compDetails')" />  
