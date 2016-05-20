@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.googlecode.genericdao.search.Search;
 import com.karma.workhistory.dao.HibernateUtil;
+import com.karma.workhistory.model.RequestQueue;
 import com.karma.workhistory.model.User;
 import com.karma.workhistory.service.util.EmailValidator;
 import com.karma.workhistory.service.util.RandomPasswordGenerator;
@@ -55,15 +56,6 @@ public class UserService {
 		boolean valid = true;
 		String result = null;
 		if (valid) {
-
-			/*
-			 * Search serachCriteria = new Search(User.class);
-			 * serachCriteria.addFilterEqual("firstName", user.getFirstName());
-			 * serachCriteria.addFilterEqual("lastName", user.getLastName() );
-			 * 
-			 * List<User> object = hibernateUtil.search(serachCriteria); if
-			 * (object == null) {
-			 */
 			try {
 				hibernateUtil.save(User.class, user);
 			} catch (Exception e) {
@@ -89,5 +81,4 @@ public class UserService {
 
 		return user;
 	}
-
 }

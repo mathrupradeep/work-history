@@ -51,7 +51,7 @@ $(document).ready(function () {
     <INPUT type="button" value="Delete Row" onclick="deleteRow('compDetails')" /> 
    <table id="compDetails">
     <tr>
-        <td>    EMP ID  &nbsp; <input type="text" name="empId"> <br> </td>
+        <td>    EMP ID  &nbsp; <input type="text" name="employeeId"> <br> </td>
 	    <td>    Joining Date  &nbsp; <input type="text" id="joiningDate" name="joiningDate"> <br> </td>
 	    <td>    Relieving Date &nbsp; <input type="text" id="relievingDate" name="relievingDate"> <br> </td>
 	    <td>    Upload Relieving letter in PDF format &nbsp; <input type="file" id="relievingLetterPDF"  name="relievingLetterPDF" > </br> </td>

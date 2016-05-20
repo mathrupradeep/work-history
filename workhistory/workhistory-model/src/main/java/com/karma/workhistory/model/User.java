@@ -19,20 +19,14 @@ import javax.persistence.Table;
 @Table(name = "user")
 public class User implements Serializable {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 2404399018026624196L;
 
-    /**
-     * @return the serialversionuid
-     */
     public static long getSerialversionuid() {
         return serialVersionUID;
     }
 
     @Id
-    @Column(name = "id")
+    @Column(name = "user_id")
     @GeneratedValue(strategy=GenerationType.SEQUENCE )
     private Long id;
 
@@ -53,77 +47,17 @@ public class User implements Serializable {
 
     @Column(name = "user_type")
     private String userType;
-    
-    @Column(name = "most_recent_employer")
-    private String mostRecentEmployer;
-    
-    @Column(name = "emp_id")
-    private String empId;
 
     @Column(name = "birth_date")
     private Date birthDate;
-    
-    @Column(name = "joining_date")
-    private Date joiningDate;
-    
-    @Column(name = "relieving_date")
-    private Date relievingDate;
-    
+        
     @Column(name = "profile_picture")
     private Blob profilePicture;
-    
-    @Column(name = "relieving_letter_PDF")
-    private File relievingLetterPDF;
-    
-    
-    
-    
-    
     
 
 /*    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company company;*/
-
-    public String getMostRecentEmployer() {
-		return mostRecentEmployer;
-	}
-
-	public void setMostRecentEmployer(String mostRecentEmployer) {
-		this.mostRecentEmployer = mostRecentEmployer;
-	}
-
-	public String getEmpId() {
-		return empId;
-	}
-
-	public void setEmpId(String empId) {
-		this.empId = empId;
-	}
-
-	public Date getJoiningDate() {
-		return joiningDate;
-	}
-
-	public void setJoiningDate(Date joiningDate) {
-		this.joiningDate = joiningDate;
-	}
-
-	public Date getRelievingDate() {
-		return relievingDate;
-	}
-
-	public void setRelievingDate(Date relievingDate) {
-		this.relievingDate = relievingDate;
-	}
-
-	public File getRelievingLetterPDF() {
-		return relievingLetterPDF;
-	}
-
-	public void setRelievingLetterPDF(File relievingLetterPDF2) {
-		this.relievingLetterPDF = relievingLetterPDF2;
-	}
 
 	/**
      * @return the birthDate

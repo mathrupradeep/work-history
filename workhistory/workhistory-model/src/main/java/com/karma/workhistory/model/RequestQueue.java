@@ -1,12 +1,21 @@
 package com.karma.workhistory.model;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "requestQueue")
 public class RequestQueue implements Serializable {
 
     /**
@@ -20,16 +29,25 @@ public class RequestQueue implements Serializable {
     public static long getSerialversionuid() {
         return serialVersionUID;
     }
+    
+   // private User user;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "request_id")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE )
     private Long id;
-
-    @Column(name = "start_date")
-    private Date startDate;
-
+    
+    @Column(name = "joining_date")
+    private Date joiningDate;
+    
     @Column(name = "relieving_date")
     private Date relievingDate;
+    
+    @Column(name = "relieving_letter_PDF")
+    private File relievingLetterPDF;
+
+    @Column(name = "most_recent_employer")
+    private String mostRecentEmployer;
 
     @Column(name = "employee_id")
     private String employeeId;
@@ -43,8 +61,8 @@ public class RequestQueue implements Serializable {
     @OneToOne(mappedBy = "informationSeeker")
     private Company informationSeeker;
 
-    @OneToOne(mappedBy = "informatioProvider")
-    private Company informatioProvider;
+    @OneToOne(mappedBy = "informationProvider")
+    private Company informationProvider;
 
     @OneToOne
     private RequestStatus requestStatus;
@@ -80,8 +98,8 @@ public class RequestQueue implements Serializable {
     /**
      * @return the informatioProvider
      */
-    public Company getInformatioProvider() {
-        return informatioProvider;
+    public Company getInformationProvider() {
+        return informationProvider;
     }
 
     /**
@@ -103,13 +121,6 @@ public class RequestQueue implements Serializable {
      */
     public Long getSalary() {
         return salary;
-    }
-
-    /**
-     * @return the startDate
-     */
-    public Date getStartDate() {
-        return startDate;
     }
 
     /**
@@ -144,20 +155,56 @@ public class RequestQueue implements Serializable {
         this.informationSeeker = informationSeeker;
     }
 
-    /**
-     * @param informatioProvider
-     *            the informatioProvider to set
-     */
-    public void setInformatioProvider(final Company informatioProvider) {
-        this.informatioProvider = informatioProvider;
+    public Date getJoiningDate() {
+        return joiningDate;
+    }
+
+    public void setJoiningDate(Date joiningDate) {
+        this.joiningDate = joiningDate;
+    }
+
+    public Date getRelievingDate() {
+        return relievingDate;
+    }
+
+    public void setRelievingDate(Date relievingDate) {
+        this.relievingDate = relievingDate;
+    }
+
+    public File getRelievingLetterPDF() {
+        return relievingLetterPDF;
+    }
+
+    public void setRelievingLetterPDF(File relievingLetterPDF) {
+        this.relievingLetterPDF = relievingLetterPDF;
+    }
+
+    public String getMostRecentEmployer() {
+        return mostRecentEmployer;
+    }
+
+    public void setMostRecentEmployer(String mostRecentEmployer) {
+        this.mostRecentEmployer = mostRecentEmployer;
+    }
+
+    public void setInformationProvider(Company informationProvider) {
+        this.informationProvider = informationProvider;
     }
 
     /**
-     * @param relivingDate
-     *            the relivingDate to set
+     * @param informationProvider
+     *            the informationProvider to set
      */
-    public void setRelivingDate(final Date relivingDate) {
-        this.relievingDate = relivingDate;
+    public void setInformatioProvider(final Company informationProvider) {
+        this.informationProvider = informationProvider;
+    }
+
+    /**
+     * @param relievingDate
+     *            the relievingDate to set
+     */
+    public void setRelivingDate(final Date relievingDate) {
+        this.relievingDate = relievingDate;
     }
 
     /**
@@ -176,12 +223,13 @@ public class RequestQueue implements Serializable {
         this.salary = salary;
     }
 
-    /**
-     * @param startDate
-     *            the startDate to set
-     */
-    public void setStartDate(final Date startDate) {
-        this.startDate = startDate;
+    /*@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "AUTHOR_ID")
+    public User getUser() {
+        return user;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    } */
 }
