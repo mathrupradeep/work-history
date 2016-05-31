@@ -12,7 +12,7 @@ import com.karma.workhistory.model.User;
 public class RequestQueueService {
 
     @Autowired
-    private HibernateUtil<User, User> hibernateUtil;
+    private HibernateUtil<RequestQueue, RequestQueue> hibernateUtil;
 
     @Transactional
     public String addCandidateEmploymentDetails(RequestQueue candidateEmpDetails) {
@@ -22,7 +22,6 @@ public class RequestQueueService {
 	    try {
 		hibernateUtil.save(RequestQueue.class, candidateEmpDetails);
 	    } catch (Exception e) {
-		System.out.println("Exception from persist or update in RequestQueueService \n");
 		e.printStackTrace();
 		result = e.getMessage();
 	    }

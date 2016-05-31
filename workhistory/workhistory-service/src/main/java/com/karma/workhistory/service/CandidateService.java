@@ -9,7 +9,7 @@ import com.karma.workhistory.service.util.RandomPasswordGenerator;
 import com.karma.workhistory.service.util.UserType;
 
 @Service("candidateService")
-public class CandidateService {
+public class CandidateService{
 
 	@Autowired
 	UserService userService;
@@ -24,9 +24,7 @@ public class CandidateService {
 	}
 
 	public String addCandidateDetails(User candidate) {
-		candidate.setPassword(RandomPasswordGenerator.getRandomPassword(9));
-		candidate.setUserType(UserType.valueOf("Candidate").toString());
-		return userService.addDetails(candidate);
+		return userService.updateUserDetails(candidate);
 	}
 
 	public String addCandidateEmploymentDetails(RequestQueue candidateEmpDetails) {

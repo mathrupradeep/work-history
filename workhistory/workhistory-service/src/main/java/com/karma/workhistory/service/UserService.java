@@ -36,7 +36,7 @@ public class UserService {
 			serachCriteria.addFilterEqual("emailId", user.getEmailId());
 			serachCriteria.addFilterEqual("phoneNumber", user.getPhoneNumber());
 			hibernateUtil.setSessionFactory(hibernateUtil.getsessionFactory());
-			User object = (User) hibernateUtil.searchUnique(serachCriteria);
+			User object = (User) hibernateUtil.search(serachCriteria);
 			if (object == null) {
 				try {
 					hibernateUtil.save(User.class, user);
@@ -50,14 +50,28 @@ public class UserService {
 
 		return result;
 	}
+	
+	
+	public User getUserByEmailID(String emailID){
+	    
+	    emailID ="indianvicky91@gmail.com";
+	    Search serachCriteria = new Search(User.class);
+		serachCriteria.addFilterEqual("emailId", emailID);
+		hibernateUtil.setSessionFactory(hibernateUtil.getsessionFactory());
+		User object = (User) hibernateUtil.searchUnique(serachCriteria);
+		return object;
+	}
 
 	@Transactional
-	public String addDetails(User user) {
-		boolean valid = true;
+	public String updateUserDetails(User user) {
 		String result = null;
-		if (valid) {
+		User curUser = getUserByEmailID(user.getEmailId());
+		user.setId(curUser.getId());
+		 Search serachCriteria = new Search(User.class);
+	         serachCriteria.addFilterEqual("emailId", user.getEmailId());
+		if (user!=null) {
 			try {
-				hibernateUtil.save(User.class, user);
+				hibernateUtil.update(User.class, user);
 			} catch (Exception e) {
 				System.out.println("Exception from persist or update ");
 				e.printStackTrace();
@@ -80,5 +94,11 @@ public class UserService {
 			user = null;
 
 		return user;
+	}
+
+
+	public String updateDetails(User candidate) 	{
+	    // TODO Auto-generated method stub
+	    return null;
 	}
 }

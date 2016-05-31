@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "requestQueue")
+@Table(name = "request_Queue")
 public class RequestQueue implements Serializable {
 
     /**
@@ -33,7 +34,7 @@ public class RequestQueue implements Serializable {
    // private User user;
 
     @Id
-    @Column(name = "request_id")
+    @Column(name = "id")
     @GeneratedValue(strategy=GenerationType.SEQUENCE )
     private Long id;
     
@@ -58,14 +59,29 @@ public class RequestQueue implements Serializable {
     @Column(name = "designation")
     private String designation;
 
-    @OneToOne(mappedBy = "informationSeeker")
+   /* @OneToOne(mappedBy = "informationSeeker")
+    @JoinColumn(name="information_seeker")
     private Company informationSeeker;
 
     @OneToOne(mappedBy = "informationProvider")
-    private Company informationProvider;
-
+    @JoinColumn(name="information_provider")
+    private Company informationProvider;*/
+    
     @OneToOne
-    private RequestStatus requestStatus;
+    @JoinColumn(name="candidate_id")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Column(name="request_status")
+    private String requestStatus;
+
 
     /**
      * @return the designation
@@ -91,29 +107,22 @@ public class RequestQueue implements Serializable {
     /**
      * @return the informationSeeker
      */
-    public Company getInformationSeeker() {
+   /* public Company getInformationSeeker() {
         return informationSeeker;
-    }
+    }*/
 
     /**
      * @return the informatioProvider
      */
-    public Company getInformationProvider() {
+   /* public Company getInformationProvider() {
         return informationProvider;
-    }
+    }*/
 
     /**
      * @return the relivingDate
      */
     public Date getRelivingDate() {
         return relievingDate;
-    }
-
-    /**
-     * @return the requestStatus
-     */
-    public RequestStatus getRequestStatus() {
-        return requestStatus;
     }
 
     /**
@@ -151,9 +160,9 @@ public class RequestQueue implements Serializable {
      * @param informationSeeker
      *            the informationSeeker to set
      */
-    public void setInformationSeeker(final Company informationSeeker) {
+   /* public void setInformationSeeker(final Company informationSeeker) {
         this.informationSeeker = informationSeeker;
-    }
+    }*/
 
     public Date getJoiningDate() {
         return joiningDate;
@@ -187,17 +196,17 @@ public class RequestQueue implements Serializable {
         this.mostRecentEmployer = mostRecentEmployer;
     }
 
-    public void setInformationProvider(Company informationProvider) {
+ /*   public void setInformationProvider(Company informationProvider) {
         this.informationProvider = informationProvider;
-    }
+    }*/
 
     /**
      * @param informationProvider
      *            the informationProvider to set
      */
-    public void setInformatioProvider(final Company informationProvider) {
+   /* public void setInformatioProvider(final Company informationProvider) {
         this.informationProvider = informationProvider;
-    }
+    }*/
 
     /**
      * @param relievingDate
@@ -208,14 +217,6 @@ public class RequestQueue implements Serializable {
     }
 
     /**
-     * @param requestStatus
-     *            the requestStatus to set
-     */
-    public void setRequestStatus(final RequestStatus requestStatus) {
-        this.requestStatus = requestStatus;
-    }
-
-    /**
      * @param salary
      *            the salary to set
      */
@@ -223,6 +224,15 @@ public class RequestQueue implements Serializable {
         this.salary = salary;
     }
 
+    
+    public String getRequestStatus() {
+        return requestStatus;
+    }
+
+    public void setRequestStatus(String requestStatus) {
+        this.requestStatus = requestStatus;
+    }
+    
     /*@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "AUTHOR_ID")
     public User getUser() {

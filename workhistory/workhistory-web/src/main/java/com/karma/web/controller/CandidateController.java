@@ -1,7 +1,9 @@
 package com.karma.web.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -14,9 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.karma.workhistory.model.Company;
+import com.karma.workhistory.model.RequestInitiator;
 import com.karma.workhistory.model.RequestQueue;
 import com.karma.workhistory.model.User;
 import com.karma.workhistory.service.CandidateService;
+import com.karma.workhistory.service.RequestInitiatorService;
+import com.karma.workhistory.service.UserService;
+import com.karma.workhistory.service.util.RequestStatus;
 import com.karma.workhistory.service.util.SendEmail;
 
 @Controller
@@ -26,6 +33,12 @@ public class CandidateController {
 
 	@Autowired
 	private CandidateService candiateService;
+	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private RequestInitiatorService requestInitiatorService;
 
 	@RequestMapping(value = "/addCandidate")
 	public ModelAndView getAddCandidate() {
@@ -43,12 +56,21 @@ public class CandidateController {
 		ModelAndView model = new ModelAndView();
 		System.out.println(mailId + phoneNumber);
 		User candidate = new User();
+		RequestInitiator requestInitiator = new RequestInitiator();
 		SendEmail sendEmail = new SendEmail();
 		candidate.setEmailId(mailId);
 		candidate.setPhoneNumber(phoneNumber);
+		
+		requestInitiator.setCandidateId(userService.getUserByEmailID(null));
+		List<Company> company = new ArrayList();
+		company.add(userService.getUserByEmailID(null).getCompany());
+		requestInitiator.setCompany(company);
+		
 		String message = candiateService.addCandidate(candidate);
+		String processInitiated = requestInitiatorService.requestInitiator(requestInitiator);
+		System.out.println("processInitiated = "+processInitiated);
 		if (message == null){
-			message = "Candidate Added Sucessfully";
+			message = "Candidate Added Sucessfully & Email will be sent";
 			sendEmail.sendEmailFunction(candidate);
 		}
 		else
@@ -88,15 +110,19 @@ public class CandidateController {
 		candidate.setLastName(lastName);
 		candidate.setBirthDate(DOB);
 		candidate.setPhoneNumber(primaryPhoneNumber);
+		candidate.setEmailId("indianvicky91@gmail.com");
 		
 		candidateEmpDetails.setEmployeeId(employeeId);
 		candidateEmpDetails.setMostRecentEmployer(mostRecentEmployer); 
 		candidateEmpDetails.setJoiningDate(joiningDate);
 		candidateEmpDetails.setRelievingDate(relievingDate);
 		candidateEmpDetails.setRelievingLetterPDF(relievingLetterPDF);
+		candidateEmpDetails.setRequestStatus(RequestStatus.valueOf("Created").toString());
+		candidateEmpDetails.setUser(userService.getUserByEmailID(null));
 		
 		String successOrFailure = candiateService.addCandidateDetails(candidate);
 		String decidecandidateEmpDetails = candiateService.addCandidateEmploymentDetails(candidateEmpDetails);
+		
 		if (successOrFailure == null && decidecandidateEmpDetails == null)
 			successOrFailure = "Candidate Details Added Sucessfully";
 		else
