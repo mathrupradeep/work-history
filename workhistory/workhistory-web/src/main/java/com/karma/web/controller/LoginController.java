@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.karma.workhistory.model.User;
 import com.karma.workhistory.service.UserService;
+import com.karma.workhistory.service.util.UserType;
 
 @Controller
 public class LoginController {
@@ -26,15 +27,29 @@ public class LoginController {
 		ModelAndView model = new ModelAndView();
 		User user = userService.isValidUser(userName, password);
 		if (user != null) {
-			model.setViewName("login");
-			model.addObject("message", "Login Successful");
+		    UserType userType = UserType.valueOf(user.getUserType());
+		    switch(userType){
+		    case Candidate:
+			model.setViewName("fillInCandidateDetails");
+			model.addObject("message", "Login Successful for UserType Candidate");
 			request.getSession().setAttribute("LOGGEDIN_USER", user);
-		} else {
-			model.setViewName("login");
-			model.addObject("message", "Not a valid User");
-		}
-		return model;
+			break;
 
+		    case HR :
+			model.setViewName("addCandidate");
+			model.addObject("message", "Login Successful for UserType HR");
+			request.getSession().setAttribute("LOGGEDIN_USER", user);
+			break;
+			
+		    case Admin:
+			break;
+			
+		    default:
+			break;
+		    }
+		}
+			
+		return model;
 	}
 
 	@RequestMapping(value = "/login")

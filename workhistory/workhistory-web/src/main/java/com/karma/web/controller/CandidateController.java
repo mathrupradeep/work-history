@@ -85,6 +85,7 @@ public class CandidateController {
 	@RequestMapping(value = "/fillInCandidateDetails")
 	public ModelAndView fillInCandidateDetails() {
 
+	    	//hard code email id and phone number for the logged in candidate
 		ModelAndView model = new ModelAndView();
 		model.setViewName("CandidateDetails");
 		return model;
