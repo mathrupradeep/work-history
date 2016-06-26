@@ -30,7 +30,7 @@ public class LoginController {
 		    UserType userType = UserType.valueOf(user.getUserType());
 		    switch(userType){
 		    case Candidate:
-			model.setViewName("fillInCandidateDetails");
+			model.setViewName("CandidateDetails");
 			model.addObject("message", "Login Successful for UserType Candidate");
 			request.getSession().setAttribute("LOGGEDIN_USER", user);
 			break;

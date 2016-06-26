@@ -92,11 +92,12 @@ public class HibernateUtil<T, O> extends GeneralDAOImpl implements GeneralDAO{
 		Session session = null;
 
 		try {
-			session = getSession();
+			/*session = getSession();
 			session.getTransaction().begin();
-			findAll(type);
+			//findAll(type);
 			session.update(obj);
-			session.getTransaction().commit();
+			session.getTransaction().commit();*/
+		    save(obj);
 
 		} catch (Exception e) {
 			e.printStackTrace();

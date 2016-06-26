@@ -44,8 +44,8 @@ $(document).ready(function () {
 	First Name &nbsp;<input type="text" name="firstName"> <br>
 	Last Name  &nbsp; <input type="text" name="lastName"> <br>
 	DOB  &nbsp;  <input type="text" id="DOBSelector" name="DOB"> <br>
-	Email ID &nbsp; <input type="text" name="mailId"> <div id ="imagePic" > Put an image I here <div id="infoElement" >  if the email id is incorrect, contact HR1 </div> </div>
-    Primary Phone Number &nbsp; <input type="text" name="primaryPhoneNumber"> <div id ="imagePic" > Put an image I here <div id="infoElement" >  if the number is incorrect, contact HR1 </div> </div> 
+	<!-- Email ID &nbsp; <input type="text" name="mailId"> <div id ="imagePic" > Put an image I here <div id="infoElement" >  if the email id is incorrect, contact HR1 </div> </div>
+    Primary Phone Number &nbsp; <input type="text" name="primaryPhoneNumber"> <div id ="imagePic" > Put an image I here <div id="infoElement" >  if the number is incorrect, contact HR1 </div> </div> --> 
 	Select the most recent previous employer &nbsp <input type="text" name="mostRecentEmployer" >  //drop down box  <br><br><br> 
     
    <INPUT type="button" value="Add Row" onclick="addRow('compDetails')" />  

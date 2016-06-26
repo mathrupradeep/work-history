@@ -12,7 +12,7 @@ ON DELETE CASCADE;
 
 
 
-CREATE SEQUENCE usersequence   START 1;
+CREATE SEQUENCE usersequence   START 3;
 ALTER TABLE workhistory.user ALTER COLUMN id SET DEFAULT nextval('usersequence');
 
 

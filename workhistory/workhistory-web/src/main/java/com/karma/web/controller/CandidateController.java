@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -60,6 +61,7 @@ public class CandidateController {
 		SendEmail sendEmail = new SendEmail();
 		candidate.setEmailId(mailId);
 		candidate.setPhoneNumber(phoneNumber);
+		candidate.setCompany(userService.getUserByEmailID("vikramk.cs@gmail.com").getCompany());
 		
 		requestInitiator.setCompany(userService.getUserByEmailID("vikramk.cs@gmail.com").getCompany());
 		
@@ -95,22 +97,20 @@ public class CandidateController {
 			@RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName,
 			@RequestParam("DOB") Date DOB,
-			@RequestParam("primaryPhoneNumber") String primaryPhoneNumber,
 			@RequestParam("mostRecentEmployer") String mostRecentEmployer,
 			@RequestParam("employeeId") String employeeId,
 			@RequestParam("joiningDate") Date joiningDate,
 			@RequestParam("relievingDate") Date relievingDate,
-			@RequestParam("relievingLetterPDF") File relievingLetterPDF) {
+			@RequestParam("relievingLetterPDF") File relievingLetterPDF,
+			HttpServletRequest request) {
 
 		ModelAndView model = new ModelAndView();
-		System.out.println(firstName +" "+ lastName +" "+ primaryPhoneNumber);
-		User candidate = new User();
+		System.out.println(firstName +" "+ lastName );
+		User candidate = (User) request.getSession().getAttribute("LOGGEDIN_USER");
 		RequestQueue candidateEmpDetails = new RequestQueue();
 		candidate.setFirstName(firstName);
 		candidate.setLastName(lastName);
 		candidate.setBirthDate(DOB);
-		candidate.setPhoneNumber(primaryPhoneNumber);
-		candidate.setEmailId("indianvicky91@gmail.com");
 		
 		candidateEmpDetails.setEmployeeId(employeeId);
 		candidateEmpDetails.setMostRecentEmployer(mostRecentEmployer); 
@@ -118,10 +118,11 @@ public class CandidateController {
 		candidateEmpDetails.setRelievingDate(relievingDate);
 		candidateEmpDetails.setRelievingLetterPDF(relievingLetterPDF);
 		candidateEmpDetails.setRequestStatus(RequestStatus.valueOf("Created").toString());
-		candidateEmpDetails.setUser(userService.getUserByEmailID(null));
+		candidateEmpDetails.setUser(candidate);
 		
-		String successOrFailure = candiateService.addCandidateDetails(candidate);
 		String decidecandidateEmpDetails = candiateService.addCandidateEmploymentDetails(candidateEmpDetails);
+		String successOrFailure = candiateService.addCandidateDetails(candidate);
+		
 		
 		if (successOrFailure == null && decidecandidateEmpDetails == null)
 			successOrFailure = "Candidate Details Added Sucessfully";

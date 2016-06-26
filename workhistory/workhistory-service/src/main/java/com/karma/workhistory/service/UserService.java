@@ -44,7 +44,6 @@ public class UserService {
 					e.printStackTrace();
 					result = e.getMessage();
 				}
-
 			}
 		}
 
@@ -71,13 +70,14 @@ public class UserService {
 	@Transactional
 	public String updateUserDetails(User user) {
 		String result = null;
-		User curUser = getUserByEmailID(user.getEmailId());
+/*		User curUser = getUserByEmailID(user.getEmailId());
 		user.setId(curUser.getId());
 		 Search serachCriteria = new Search(User.class);
-	         serachCriteria.addFilterEqual("emailId", user.getEmailId());
+	         serachCriteria.addFilterEqual("emailId", user.getEmailId());*/
+	         
 		if (user!=null) {
 			try {
-				hibernateUtil.update(User.class, user);
+				hibernateUtil.save(user);
 			} catch (Exception e) {
 				System.out.println("Exception from persist or update ");
 				e.printStackTrace();
@@ -85,7 +85,6 @@ public class UserService {
 			}
 
 		}
-		/* } */
 		return result;
 	}
 
