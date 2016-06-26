@@ -23,9 +23,9 @@
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
-	<mvc:interceptors>
+	 <mvc:interceptors>
 		<bean class="com.karma.web.controller.AuthenticationInterceptor" />
-	</mvc:interceptors>
+	</mvc:interceptors> 
 
 	<mvc:annotation-driven />
 
