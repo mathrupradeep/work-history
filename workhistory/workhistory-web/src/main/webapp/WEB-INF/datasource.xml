@@ -45,12 +45,12 @@
 				<value>com.karma.workhistory.model.User</value>
 			</list>
 		</property>
-	</bean>
+	</bean> 
 
-	<bean id="tansactionManager"
+	<!-- <bean id="tansactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:annotation-driven transaction-manager="transactionManager" />-->
 
 </beans>

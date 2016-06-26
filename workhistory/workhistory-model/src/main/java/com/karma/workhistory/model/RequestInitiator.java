@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,16 +25,17 @@ public class RequestInitiator implements Serializable{
 
     @Id
     @Column(name="id")
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
     
     @ManyToOne(targetEntity = Company.class)
     @JoinColumn(name = "company")
-    private List<Company> company;
+    private Company company;
     
     //maybe useful in the future
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "hr_id")
-    private List<User> hrId;
+    private User hrId;
     
     @OneToOne
     @JoinColumn(name = "candidate_id")
@@ -46,19 +49,19 @@ public class RequestInitiator implements Serializable{
         this.id = id;
     }
 
-    public List<Company> getCompany() {
+    public Company getCompany() {
         return company;
     }
 
-    public void setCompany(List<Company> company) {
+    public void setCompany(Company company) {
         this.company = company;
     }
 
-    public List<User> getHrId() {
+    public User getHrId() {
         return hrId;
     }
 
-    public void setHrId(List<User> hrId) {
+    public void setHrId(User hrId) {
         this.hrId = hrId;
     }
     public User getCandidateId() {

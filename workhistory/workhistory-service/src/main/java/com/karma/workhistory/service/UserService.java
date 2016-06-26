@@ -36,7 +36,7 @@ public class UserService {
 			serachCriteria.addFilterEqual("emailId", user.getEmailId());
 			serachCriteria.addFilterEqual("phoneNumber", user.getPhoneNumber());
 			hibernateUtil.setSessionFactory(hibernateUtil.getsessionFactory());
-			User object = (User) hibernateUtil.search(serachCriteria);
+			User object = (User) hibernateUtil.searchUnique(serachCriteria);
 			if (object == null) {
 				try {
 					hibernateUtil.save(User.class, user);
@@ -51,14 +51,20 @@ public class UserService {
 		return result;
 	}
 	
-	
+	@Transactional
 	public User getUserByEmailID(String emailID){
 	    
-	    emailID ="indianvicky91@gmail.com";
 	    Search serachCriteria = new Search(User.class);
 		serachCriteria.addFilterEqual("emailId", emailID);
 		hibernateUtil.setSessionFactory(hibernateUtil.getsessionFactory());
-		User object = (User) hibernateUtil.searchUnique(serachCriteria);
+		User object=null;
+		try{
+		object = (User) hibernateUtil.searchUnique(serachCriteria);
+		}
+		
+		catch(Exception e){
+			e.printStackTrace();
+		}
 		return object;
 	}
 

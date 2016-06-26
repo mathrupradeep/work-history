@@ -61,12 +61,11 @@ public class CandidateController {
 		candidate.setEmailId(mailId);
 		candidate.setPhoneNumber(phoneNumber);
 		
-		requestInitiator.setCandidateId(userService.getUserByEmailID(null));
-		List<Company> company = new ArrayList();
-		company.add(userService.getUserByEmailID(null).getCompany());
-		requestInitiator.setCompany(company);
+		requestInitiator.setCompany(userService.getUserByEmailID("Sangeetha.bhat@karma.com").getCompany());
 		
 		String message = candiateService.addCandidate(candidate);
+		requestInitiator.setCandidateId(userService.getUserByEmailID(mailId));
+		requestInitiator.setHrId(userService.getUserByEmailID("Sangeetha.bhat@karma.com"));
 		String processInitiated = requestInitiatorService.requestInitiator(requestInitiator);
 		System.out.println("processInitiated = "+processInitiated);
 		if (message == null){

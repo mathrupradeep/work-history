@@ -18,7 +18,7 @@ public class RandomPasswordGenerator {
 		
 		//return builder.toString();
 		passwordForEmail = builder.toString();
-		return generateHash(builder.toString());
+		return "admin123";
 	}
 	
 	public static String generateHash(String input) {
