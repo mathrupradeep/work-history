@@ -58,6 +58,9 @@ public class RequestQueue implements Serializable {
 
     @Column(name = "designation")
     private String designation;
+    
+    @Column(name = "created_date")
+    private Date createdDate;
 
    /* @OneToOne(mappedBy = "informationSeeker")
     @JoinColumn(name="information_seeker")
@@ -232,6 +235,14 @@ public class RequestQueue implements Serializable {
     public void setRequestStatus(String requestStatus) {
         this.requestStatus = requestStatus;
     }
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
     
     /*@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "AUTHOR_ID")

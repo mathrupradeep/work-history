@@ -77,7 +77,7 @@ public class UserService {
 	         
 		if (user!=null) {
 			try {
-				hibernateUtil.save(user);
+				hibernateUtil.update(User.class,user);
 			} catch (Exception e) {
 				System.out.println("Exception from persist or update ");
 				e.printStackTrace();

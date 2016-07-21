@@ -111,9 +111,11 @@ public class CandidateController {
 		candidateEmpDetails.setRelievingLetterPDF(relievingLetterPDF);
 		candidateEmpDetails.setRequestStatus(RequestStatus.valueOf("Created").toString());
 		candidateEmpDetails.setUser(candidate);
+		candidateEmpDetails.setCreatedDate(new Date());
 		
-		String decidecandidateEmpDetails = candiateService.addCandidateEmploymentDetails(candidateEmpDetails);
 		String successOrFailure = candiateService.addCandidateDetails(candidate);
+		String decidecandidateEmpDetails = candiateService.addCandidateEmploymentDetails(candidateEmpDetails);
+		
 		
 		
 		if (successOrFailure == null && decidecandidateEmpDetails == null)

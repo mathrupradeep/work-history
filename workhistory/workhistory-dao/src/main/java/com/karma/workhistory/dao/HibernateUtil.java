@@ -9,16 +9,22 @@ import org.springframework.stereotype.Repository;
 
 import com.googlecode.genericdao.dao.hibernate.GeneralDAO;
 import com.googlecode.genericdao.dao.hibernate.GeneralDAOImpl;
-import com.googlecode.genericdao.search.Search;
 
 @Repository("hibernateUtil")
 public class HibernateUtil<T, O> extends GeneralDAOImpl implements GeneralDAO{
 
 	@Autowired
 	SessionFactory sessionFactory;
+	
+	Session session;
 
 	protected Session getSession() {
-		return sessionFactory.openSession();
+	    if (session != null && session.isOpen()) {
+	        return session;
+	    } else {
+	        session = sessionFactory.openSession();
+	        return session;
+	    }
 	}
 	
 	public SessionFactory getsessionFactory() {
@@ -92,12 +98,10 @@ public class HibernateUtil<T, O> extends GeneralDAOImpl implements GeneralDAO{
 		Session session = null;
 
 		try {
-			/*session = getSession();
+			session = getSession();
 			session.getTransaction().begin();
-			//findAll(type);
 			session.update(obj);
-			session.getTransaction().commit();*/
-		    save(obj);
+			session.getTransaction().commit();
 
 		} catch (Exception e) {
 			e.printStackTrace();
