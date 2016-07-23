@@ -2,6 +2,7 @@ package com.karma.web.controller;
 
 import java.io.File;
 import java.util.Date;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletRequest;
@@ -93,6 +94,8 @@ public class CandidateController {
 			@RequestParam("employeeId") String employeeId,
 			@RequestParam("joiningDate") Date joiningDate,
 			@RequestParam("relievingDate") Date relievingDate,
+			@RequestParam("designation") String designation,
+			@RequestParam("CTC") Long CTC,
 			@RequestParam("relievingLetterPDF") File relievingLetterPDF,
 			HttpServletRequest request) {
 
@@ -108,6 +111,8 @@ public class CandidateController {
 		candidateEmpDetails.setMostRecentEmployer(mostRecentEmployer); 
 		candidateEmpDetails.setJoiningDate(joiningDate);
 		candidateEmpDetails.setRelievingDate(relievingDate);
+		candidateEmpDetails.setSalary(CTC);
+		candidateEmpDetails.setDesignation(designation);
 		candidateEmpDetails.setRelievingLetterPDF(relievingLetterPDF);
 		candidateEmpDetails.setRequestStatus(RequestStatus.valueOf("Created").toString());
 		candidateEmpDetails.setUser(candidate);
@@ -118,12 +123,19 @@ public class CandidateController {
 		
 		
 		
-		if (successOrFailure == null && decidecandidateEmpDetails == null)
-			successOrFailure = "Candidate Details Added Sucessfully";
+		if (successOrFailure == null && decidecandidateEmpDetails == null){
+		    successOrFailure = "Candidate Details Added Sucessfully" + "First Name"+firstName +"lastName"+lastName +"DOB" +DOB +"employeeId" +employeeId
+			    +"mostRecentEmployer"+mostRecentEmployer +" joiningDate"+ joiningDate +"relievingDate"+relievingDate +"CTC"+CTC
+			    +"designation"+designation +"relievingLetterPDF"+relievingLetterPDF ;
+		    
+		}
+			
 		else
 			successOrFailure = "Error adding candidate Details";
 		model.addObject("msg", successOrFailure);
-		model.setViewName("CandidateDetails");
+		//model.setViewName("CandidateDetails");
+		model.setViewName("displayCandidateDetails");
+		model.addObject("dispCandDetails", candidateEmpDetails);
 		return model;
 
 	}

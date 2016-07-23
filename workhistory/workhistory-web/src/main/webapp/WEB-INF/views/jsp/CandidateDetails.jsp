@@ -46,7 +46,7 @@ $(document).ready(function () {
 	DOB  &nbsp;  <input type="text" id="DOBSelector" name="DOB"> <br>
 	<!-- Email ID &nbsp; <input type="text" name="mailId"> <div id ="imagePic" > Put an image I here <div id="infoElement" >  if the email id is incorrect, contact HR1 </div> </div>
     Primary Phone Number &nbsp; <input type="text" name="primaryPhoneNumber"> <div id ="imagePic" > Put an image I here <div id="infoElement" >  if the number is incorrect, contact HR1 </div> </div> --> 
-	Select the most recent previous employer &nbsp <input type="text" name="mostRecentEmployer" >  //drop down box  <br><br><br> 
+	Select the previous employer &nbsp <input type="text" name="mostRecentEmployer" >  //drop down box  <br><br><br> 
     
    <INPUT type="button" value="Add Row" onclick="addRow('compDetails')" />  
     <INPUT type="button" value="Delete Row" onclick="deleteRow('compDetails')" /> 
@@ -55,6 +55,8 @@ $(document).ready(function () {
         <td>    EMP ID  &nbsp; <input type="text" name="employeeId"> <br> </td>
 	    <td>    Joining Date  &nbsp; <input type="text" id="joiningDate" name="joiningDate"> <br> </td>
 	    <td>    Relieving Date &nbsp; <input type="text" id="relievingDate" name="relievingDate"> <br> </td>
+	    <td>    Designation  &nbsp; <input type="text" id="designation" name="designation"> <br> </td>
+	    <td>    CTC  &nbsp; <input type="text" id="CTC" name="CTC"> <br> </td> 
 	    <td>    Upload Relieving letter in PDF format &nbsp; <input type="file" id="relievingLetterPDF"  name="relievingLetterPDF" > </br> </td>
    </tr>
    </table>
