@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -61,6 +62,9 @@ public class RequestQueue implements Serializable {
     
     @Column(name = "created_date")
     private Date createdDate;
+    
+    @Column(name = "change_date")
+    private Date changeDate;
 
    /* @OneToOne(mappedBy = "informationSeeker")
     @JoinColumn(name="information_seeker")
@@ -69,6 +73,10 @@ public class RequestQueue implements Serializable {
     @OneToOne(mappedBy = "informationProvider")
     @JoinColumn(name="information_provider")
     private Company informationProvider;*/
+    
+	@ManyToOne
+	@JoinColumn(name="approver_company_id")
+	private Company approverCompany;
     
     @OneToOne
     @JoinColumn(name="candidate_id")
@@ -242,6 +250,22 @@ public class RequestQueue implements Serializable {
 
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	public Company getApproverCompany() {
+		return approverCompany;
+	}
+
+	public void setApproverCompany(Company approverCompany) {
+		this.approverCompany = approverCompany;
+	}
+
+	public Date getChangeDate() {
+		return changeDate;
+	}
+
+	public void setChangeDate(Date changeDate) {
+		this.changeDate = changeDate;
 	}
     
     /*@OneToOne(cascade = CascadeType.ALL)

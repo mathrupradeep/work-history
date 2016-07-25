@@ -11,8 +11,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "company")
@@ -55,6 +59,9 @@ public class Company implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company", targetEntity = User.class)
     private List<User> users;
+    
+    @OneToMany(mappedBy = "transaction", targetEntity = WorkHistoryTransaction.class)
+    private WorkHistoryTransaction transaction;
 
     /**
      * @return the addresses
@@ -175,5 +182,13 @@ public class Company implements Serializable {
     public void setUsers(final List<User> users) {
         this.users = users;
     }
+
+	public WorkHistoryTransaction getTrasaction() {
+		return transaction;
+	}
+
+	public void setTrasaction(WorkHistoryTransaction trasaction) {
+		this.transaction = trasaction;
+	}
 
 }

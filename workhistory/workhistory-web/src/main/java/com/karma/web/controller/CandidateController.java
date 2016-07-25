@@ -45,22 +45,23 @@ public class CandidateController {
 	@RequestMapping(value = "/submitCandidateBasicInfo")
 	public ModelAndView submitCandidateBasicInfo(
 			@RequestParam("mailId") String mailId,
-			@RequestParam("phoneNumber") String phoneNumber) throws AddressException, MessagingException {
+			@RequestParam("phoneNumber") String phoneNumber,HttpServletRequest request) throws AddressException, MessagingException {
 
 		ModelAndView model = new ModelAndView();
-		System.out.println(mailId + phoneNumber);
+		User hr = (User) request.getSession().getAttribute("LOGGEDIN_USER");
+		String hrMailId = hr.getEmailId();
 		User candidate = new User();
 		RequestInitiator requestInitiator = new RequestInitiator();
 		SendEmail sendEmail = new SendEmail();
 		candidate.setEmailId(mailId);
 		candidate.setPhoneNumber(phoneNumber);
-		candidate.setCompany(userService.getUserByEmailID("vikramk.cs@gmail.com").getCompany());
+		candidate.setCompany(userService.getUserByEmailID(hrMailId).getCompany());
 		
-		requestInitiator.setCompany(userService.getUserByEmailID("vikramk.cs@gmail.com").getCompany());
+		requestInitiator.setCompany(userService.getUserByEmailID(hrMailId).getCompany());
 		
 		String message = candiateService.addCandidate(candidate);
 		requestInitiator.setCandidateId(userService.getUserByEmailID(mailId));
-		requestInitiator.setHrId(userService.getUserByEmailID("vikramk.cs@gmail.com"));
+		requestInitiator.setHrId(userService.getUserByEmailID(hrMailId));
 		String processInitiated = requestInitiatorService.requestInitiator(requestInitiator);
 		System.out.println("processInitiated = "+processInitiated);
 		if (message == null){
@@ -119,9 +120,7 @@ public class CandidateController {
 		candidateEmpDetails.setCreatedDate(new Date());
 		
 		String successOrFailure = candiateService.addCandidateDetails(candidate);
-		String decidecandidateEmpDetails = candiateService.addCandidateEmploymentDetails(candidateEmpDetails);
-		
-		
+		String decidecandidateEmpDetails = candiateService.addCandidateEmploymentDetails(candidateEmpDetails); 
 		
 		if (successOrFailure == null && decidecandidateEmpDetails == null){
 		    successOrFailure = "Candidate Details Added Sucessfully" + "First Name"+firstName +"lastName"+lastName +"DOB" +DOB +"employeeId" +employeeId

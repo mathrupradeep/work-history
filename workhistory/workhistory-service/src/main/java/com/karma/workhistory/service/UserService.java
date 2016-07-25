@@ -96,8 +96,10 @@ public class UserService {
 		User user = (User) hibernateUtil.searchUnique(serachCriteria);
 
 		//if (!(user != null && RandomPasswordGenerator.generateHash(password).equalsIgnoreCase(user.getPassword())))
-		if (!(user != null && "admin123".equalsIgnoreCase(user.getPassword())))
+		//System.out.println(user != null && "admin123".equalsIgnoreCase(password));
+		if (!(user != null && "admin123".equalsIgnoreCase(password))){
 			user = null;
+		}
 
 		return user;
 	}

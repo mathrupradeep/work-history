@@ -2,13 +2,13 @@ package com.karma.workhistory.service.util;
 /*
  * Class for RequestStatus
  */
-public enum RequestStatus {
+public enum TransactionStatus {
 
-	Created("CREATED"),Initiated("INITIATED"),Completed("COMPLETED");
+	Created("CREATED"),Accepted("ACCEPTED"),Rejected("REJECTED");
 	
 	String status;
 	
-	RequestStatus(String status){
+	TransactionStatus(String status){
 		this.status = status;
 	}
 	

@@ -24,12 +24,15 @@ ALTER TABLE workhistory.request_initiator ALTER COLUMN id SET DEFAULT nextval('r
 CREATE SEQUENCE companysequence   START 1;
 ALTER TABLE workhistory.company ALTER COLUMN id SET DEFAULT nextval('companysequence');
 
+CREATE SEQUENCE workhistorytransaction   START 1;
+ALTER TABLE workhistory.work_history_transaction ALTER COLUMN id SET DEFAULT nextval('workhistorytransaction');
+
 
 insert into workhistory.company values 
-(54, 'alias', 45, 'Cone Company', 454, null);
+(54, 'alias',null, 'Cone Company', 454, null);
 
 insert into workhistory.company values 
-(56, 'alias', 45, 'Ctwo Company', 455, null);
+(56, 'alias',null, 'Ctwo Company', 455, null);
 
 insert into workhistory.user values 
 (1,null, 'vikramk.cs@gmail.com','vikram','kolla','admin123',4354354353,null,'HR', 54);

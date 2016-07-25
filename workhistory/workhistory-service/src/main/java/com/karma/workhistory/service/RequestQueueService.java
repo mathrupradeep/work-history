@@ -1,10 +1,15 @@
 package com.karma.workhistory.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.googlecode.genericdao.search.Search;
 import com.karma.workhistory.dao.HibernateUtil;
+import com.karma.workhistory.model.Company;
 import com.karma.workhistory.model.RequestQueue;
 import com.karma.workhistory.model.User;
 
@@ -13,6 +18,9 @@ public class RequestQueueService {
 
     @Autowired
     private HibernateUtil<RequestQueue, RequestQueue> hibernateUtil;
+    
+    @Autowired
+    private UserService userService;
 
     @Transactional
     public String addCandidateEmploymentDetails(RequestQueue candidateEmpDetails) {
@@ -27,8 +35,26 @@ public class RequestQueueService {
 	    }
 
 	}
-	/* } */
+
 	return result;
     }
 
+    
+    public List<RequestQueue> getRequestQueueOnStatusa(String status,Company company){
+    	
+		Search serachCriteria = new Search(RequestQueue.class);
+		serachCriteria.addFilterEqual("requestStatus", status);
+		List<RequestQueue> queuelist = hibernateUtil.search(serachCriteria);
+		List<RequestQueue> otherCompanyQueues = new ArrayList<RequestQueue>();
+		
+		for(RequestQueue request:queuelist){
+			Company requestCompany = null;
+			requestCompany = userService.getUserByEmailID(request.getUser().getEmailId()).getCompany();
+			if(requestCompany.getId()!=company.getId()){
+				otherCompanyQueues.add(request);
+			}
+		}
+		queuelist.removeAll(otherCompanyQueues);
+		return queuelist;
+    }
 }

@@ -37,7 +37,7 @@ public class RequestInitiator implements Serializable{
     @JoinColumn(name = "hr_id")
     private User hrId;
     
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "candidate_id")
     private User candidateId;
 
