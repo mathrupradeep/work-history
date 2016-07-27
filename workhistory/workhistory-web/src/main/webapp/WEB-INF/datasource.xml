@@ -41,7 +41,6 @@
 				<value>com.karma.workhistory.model.Company</value>
 				<value>com.karma.workhistory.model.RequestQueue</value>
 				<value>com.karma.workhistory.model.RequestInitiator</value>
-				<value>com.karma.workhistory.model.Transaction</value>
 				<value>com.karma.workhistory.model.User</value>
 			</list>
 		</property>
