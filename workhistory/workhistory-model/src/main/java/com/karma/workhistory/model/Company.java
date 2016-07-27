@@ -60,10 +60,8 @@ public class Company implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company", targetEntity = User.class)
     private List<User> users;
     
-    @OneToMany(mappedBy = "transaction", targetEntity = WorkHistoryTransaction.class)
-    private WorkHistoryTransaction transaction;
 
-    /**
+    /**<
      * @return the addresses
      */
     public List<Address> getAddresses() {
@@ -182,13 +180,4 @@ public class Company implements Serializable {
     public void setUsers(final List<User> users) {
         this.users = users;
     }
-
-	public WorkHistoryTransaction getTrasaction() {
-		return transaction;
-	}
-
-	public void setTrasaction(WorkHistoryTransaction trasaction) {
-		this.transaction = trasaction;
-	}
-
 }
