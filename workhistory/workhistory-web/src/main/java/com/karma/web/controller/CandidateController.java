@@ -2,6 +2,7 @@ package com.karma.web.controller;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.karma.workhistory.model.Company;
 import com.karma.workhistory.model.RequestInitiator;
 import com.karma.workhistory.model.RequestQueue;
 import com.karma.workhistory.model.User;
 import com.karma.workhistory.service.CandidateService;
+import com.karma.workhistory.service.CompanyService;
 import com.karma.workhistory.service.RequestInitiatorService;
 import com.karma.workhistory.service.UserService;
 import com.karma.workhistory.service.util.RequestStatus;
@@ -27,6 +30,9 @@ public class CandidateController {
 
 	@Autowired
 	private CandidateService candiateService;
+
+	@Autowired
+	private CompanyService companyService;
 	
 	@Autowired
 	private UserService userService;
@@ -78,11 +84,15 @@ public class CandidateController {
 	
 	
 	@RequestMapping(value = "/fillInCandidateDetails")
-	public ModelAndView fillInCandidateDetails() {
+	public ModelAndView fillInCandidateDetails(HttpServletRequest request) {
 
 	    	//hard code email id and phone number for the logged in candidate
 		ModelAndView model = new ModelAndView();
 		model.setViewName("CandidateDetails");
+		User LoggedInCandidateUser = (User) request.getSession().getAttribute("LOGGEDIN_USER");
+		List<Company> companies = companyService.getCompanyList();
+		companies.remove(LoggedInCandidateUser.getCompany());
+		model.addObject("CandidateCompany", companies);
 		return model;
 	}
 
@@ -123,18 +133,16 @@ public class CandidateController {
 		String decidecandidateEmpDetails = candiateService.addCandidateEmploymentDetails(candidateEmpDetails); 
 		
 		if (successOrFailure == null && decidecandidateEmpDetails == null){
-		    successOrFailure = "Candidate Details Added Sucessfully" + "First Name"+firstName +"lastName"+lastName +"DOB" +DOB +"employeeId" +employeeId
-			    +"mostRecentEmployer"+mostRecentEmployer +" joiningDate"+ joiningDate +"relievingDate"+relievingDate +"CTC"+CTC
-			    +"designation"+designation +"relievingLetterPDF"+relievingLetterPDF ;
-		    
+		    successOrFailure = "Candidate Details Added Sucessfully";
 		}
 			
 		else
 			successOrFailure = "Error adding candidate Details";
+		
 		model.addObject("msg", successOrFailure);
-		//model.setViewName("CandidateDetails");
 		model.setViewName("displayCandidateDetails");
-		model.addObject("dispCandDetails", candidateEmpDetails);
+		model.addObject("dispCandEmpDetails", candidateEmpDetails);
+		model.addObject("dispCandDetails", candidate);
 		return model;
 
 	}

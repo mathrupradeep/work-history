@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <meta charset="utf-8">
@@ -32,39 +33,54 @@ $(document).ready(function () {
 <body>
 
 <form name="candidateForm" method="post">
-</br>
-
 	<div>
 		<c:if test="${not empty msg}">
 			 ${msg}
 		</c:if>
 	</div>
+		First Name &nbsp;<input type="text" name="firstName"> <br>
+		Last Name &nbsp; <input type="text" name="lastName"> <br>
+		DOB &nbsp; <input type="text" id="DOBSelector" name="DOB"> <br>
+		
+			<!-- Email ID &nbsp; <input type="text" name="mailId"> <div id ="imagePic" > Put an image I here <div id="infoElement" >  if the email id is incorrect, contact HR1 </div> </div>
+    Primary Phone Number &nbsp; <input type="text" name="primaryPhoneNumber"> <div id ="imagePic" > Put an image I here <div id="infoElement" >  if the number is incorrect, contact HR1 </div> </div> -->
 
-<p>
-	First Name &nbsp;<input type="text" name="firstName"> <br>
-	Last Name  &nbsp; <input type="text" name="lastName"> <br>
-	DOB  &nbsp;  <input type="text" id="DOBSelector" name="DOB"> <br>
-	<!-- Email ID &nbsp; <input type="text" name="mailId"> <div id ="imagePic" > Put an image I here <div id="infoElement" >  if the email id is incorrect, contact HR1 </div> </div>
-    Primary Phone Number &nbsp; <input type="text" name="primaryPhoneNumber"> <div id ="imagePic" > Put an image I here <div id="infoElement" >  if the number is incorrect, contact HR1 </div> </div> --> 
-	Select the previous employer &nbsp <input type="text" name="mostRecentEmployer" >  //drop down box  <br><br><br> 
-    
-   <INPUT type="button" value="Add Row" onclick="addRow('compDetails')" />  
+		Select the previous employer &nbsp  
+		<select name="previousEmployer">
+		     <c:forEach var="listValue" items="${CandidateCompany}">
+                <option name="previousEmployer" value="${listValue.id}">${listValue.regCompanyName}<br>
+            </c:forEach>
+        
+		</select>
+
+	<%-- 	<C:FOREACH var="CandidateCompany" items="${CandidateCompany}">
+			<C:OUT value="${CandidateCompany}">
+			</C:OUT>
+		</C:FOREACH> --%>
+
+           
+            
+		<!-- <INPUT type="button" value="Add Row" onclick="addRow('compDetails')" />  
     <INPUT type="button" value="Delete Row" onclick="deleteRow('compDetails')" /> 
    <table id="compDetails">
     <tr>
-        <td>    EMP ID  &nbsp; <input type="text" name="employeeId"> <br> </td>
-	    <td>    Joining Date  &nbsp; <input type="text" id="joiningDate" name="joiningDate"> <br> </td>
-	    <td>    Relieving Date &nbsp; <input type="text" id="relievingDate" name="relievingDate"> <br> </td>
-	    <td>    Designation  &nbsp; <input type="text" id="designation" name="designation"> <br> </td>
-	    <td>    CTC  &nbsp; <input type="text" id="CTC" name="CTC"> <br> </td> 
-	    <td>    Upload Relieving letter in PDF format &nbsp; <input type="file" id="relievingLetterPDF"  name="relievingLetterPDF" > </br> </td>
-   </tr>
+    --> </br>
+
+		EMP ID &nbsp; <input type="text" name="employeeId"> <br>
+		Joining Date &nbsp; <input type="text" id="joiningDate"			name="joiningDate"> <br> Relieving Date &nbsp; <input
+				type="text" id="relievingDate" name="relievingDate"> <br>
+			Designation &nbsp; <input type="text" id="designation"
+				name="designation"> <br> CTC &nbsp; <input type="text"
+				id="CTC" name="CTC"> <br>
+			<!-- Upload Relieving letter in PDF format &nbsp; <input type="file" id="relievingLetterPDF"  name="relievingLetterPDF" > </br> </td> -->
+			<!-- </tr>
    </table>
-   <br>
-   <br>
-   <input type="submit" value="Submit" onclick="submitCandidateDetails()">
-   <input type="reset" value="Clear">
-</p>
+    -->
+			<br> <br> <input type="submit" value="Submit"
+				onclick="submitCandidateDetails()"> <input type="reset"
+				value="Clear">
+		</p>
+		
 </form>
 </body>
 
