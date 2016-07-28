@@ -44,9 +44,6 @@ public class RequestQueue implements Serializable {
     @Column(name = "relieving_letter_PDF")
     private File relievingLetterPDF;
 
-/*    @Column(name = "most_recent_employer")
-    private String mostRecentEmployer;*/
-
     @Column(name = "employee_id")
     private String employeeId;
 
@@ -264,13 +261,4 @@ public class RequestQueue implements Serializable {
 		this.changeDate = changeDate;
 	}
     
-    /*@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "AUTHOR_ID")
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    } */
 }
