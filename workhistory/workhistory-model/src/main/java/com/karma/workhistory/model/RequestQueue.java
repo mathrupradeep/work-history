@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ColumnResult;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,8 +29,6 @@ public class RequestQueue implements Serializable {
     public static long getSerialversionuid() {
         return serialVersionUID;
     }
-    
-   // private User user;
 
     @Id
     @Column(name = "id")
@@ -48,8 +44,8 @@ public class RequestQueue implements Serializable {
     @Column(name = "relieving_letter_PDF")
     private File relievingLetterPDF;
 
-    @Column(name = "most_recent_employer")
-    private String mostRecentEmployer;
+/*    @Column(name = "most_recent_employer")
+    private String mostRecentEmployer;*/
 
     @Column(name = "employee_id")
     private String employeeId;
@@ -65,6 +61,9 @@ public class RequestQueue implements Serializable {
     
     @Column(name = "change_date")
     private Date changeDate;
+    
+    @Column(name="request_status")
+    private String requestStatus;
 
    /* @OneToOne(mappedBy = "informationSeeker")
     @JoinColumn(name="information_seeker")
@@ -89,9 +88,6 @@ public class RequestQueue implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
-
-    @Column(name="request_status")
-    private String requestStatus;
 
 
     /**
@@ -199,13 +195,13 @@ public class RequestQueue implements Serializable {
         this.relievingLetterPDF = relievingLetterPDF;
     }
 
-    public String getMostRecentEmployer() {
+ /*   public String getMostRecentEmployer() {
         return mostRecentEmployer;
     }
 
     public void setMostRecentEmployer(String mostRecentEmployer) {
         this.mostRecentEmployer = mostRecentEmployer;
-    }
+    }*/
 
  /*   public void setInformationProvider(Company informationProvider) {
         this.informationProvider = informationProvider;

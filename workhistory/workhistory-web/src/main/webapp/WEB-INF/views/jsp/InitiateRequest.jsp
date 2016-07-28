@@ -7,7 +7,7 @@
 		<form name="requestInitatorForm" method="post">
 		<ul>
 			<c:forEach var="listValue" items="${lists}">
-				<input type="checkbox" name="candidateIds" value="${listValue.id}">${listValue.id}<br>
+				<input type="checkbox" name="requestQueueIds" value="${listValue.id}">${listValue.id}<br>
 			</c:forEach>
 		</ul>
 	   <input type="submit" value="Submit" onclick="submitrequestInitatorForm()">

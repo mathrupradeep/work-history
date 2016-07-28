@@ -1,6 +1,7 @@
 package com.karma.workhistory.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import com.googlecode.genericdao.search.Search;
 import com.karma.workhistory.dao.HibernateUtil;
 import com.karma.workhistory.model.Company;
 import com.karma.workhistory.model.RequestQueue;
-import com.karma.workhistory.model.User;
 
 @Service("requestQueueService")
 public class RequestQueueService {
@@ -40,7 +40,7 @@ public class RequestQueueService {
     }
 
     
-    public List<RequestQueue> getRequestQueueOnStatusa(String status,Company company){
+    public List<RequestQueue> getRequestQueueOnStatus(String status,Company company){
     	
 		Search serachCriteria = new Search(RequestQueue.class);
 		serachCriteria.addFilterEqual("requestStatus", status);
@@ -57,4 +57,19 @@ public class RequestQueueService {
 		queuelist.removeAll(otherCompanyQueues);
 		return queuelist;
     }
+    
+    public RequestQueue getRequestQueueOnId(int id){
+		Search serachCriteria = new Search(RequestQueue.class);
+		serachCriteria.addFilterEqual("id", id);
+		RequestQueue requestQueue = (RequestQueue) hibernateUtil.searchUnique(serachCriteria);
+    	return requestQueue;
+    }
+
+
+	public void updateStatusOnId(int requestQueueId, String status) {
+		RequestQueue requestQueue = getRequestQueueOnId(requestQueueId);
+		requestQueue.setChangeDate(new Date());
+		requestQueue.setRequestStatus(status);
+		hibernateUtil.update(RequestQueue.class, requestQueue);
+	}
 }

@@ -109,7 +109,6 @@ public class CandidateController {
 		candidate.setBirthDate(DOB);
 		
 		candidateEmpDetails.setEmployeeId(employeeId);
-		candidateEmpDetails.setMostRecentEmployer(mostRecentEmployer); 
 		candidateEmpDetails.setJoiningDate(joiningDate);
 		candidateEmpDetails.setRelievingDate(relievingDate);
 		candidateEmpDetails.setSalary(CTC);

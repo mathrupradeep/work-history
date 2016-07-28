@@ -38,6 +38,10 @@ public class WorkHistoryTransaction implements Serializable {
 	@Column(name="change_date")
 	private Date changeDate;
 	
+	@ManyToOne
+	@JoinColumn(name="requestor_company_hr_id")
+	private User requestorCompanyHr;
+	
 
 	public int getId() {
 		return id;
@@ -77,5 +81,13 @@ public class WorkHistoryTransaction implements Serializable {
 
 	public void setChangeDate(Date changeDate) {
 		this.changeDate = changeDate;
+	}
+
+	public User getRequestorCompanyHr() {
+		return requestorCompanyHr;
+	}
+
+	public void setRequestorCompanyHr(User requestorCompanyHr) {
+		this.requestorCompanyHr = requestorCompanyHr;
 	}
 }

@@ -16,6 +16,7 @@ import com.karma.workhistory.model.User;
 import com.karma.workhistory.model.WorkHistoryTransaction;
 import com.karma.workhistory.service.RequestQueueService;
 import com.karma.workhistory.service.WorkHistoryTransactionService;
+import com.karma.workhistory.service.util.RequestStatus;
 
 @Controller
 public class RequestInitiatorController {
@@ -32,7 +33,7 @@ public class RequestInitiatorController {
 		
 		User userData = (User) request.getSession().getAttribute("LOGGEDIN_USER");
 		Company company = userData.getCompany();
-		List<RequestQueue> queueList = requestQueueService.getRequestQueueOnStatusa("Created",company);
+		List<RequestQueue> queueList = requestQueueService.getRequestQueueOnStatus("Created",company);
 		ModelAndView model = new ModelAndView();
 		model.setViewName("InitiateRequest");
 		model.addObject("lists", queueList);
@@ -40,13 +41,14 @@ public class RequestInitiatorController {
 	}
 	
 	@RequestMapping("submitrequestInitator")
-	public ModelAndView submitrequestInitator(@RequestParam String[] candidateIds){
+	public ModelAndView submitrequestInitator(HttpServletRequest request,@RequestParam String[] requestQueueIds){
 
-		for( int i = 0; i < candidateIds.length - 1; i++)
+		for( int i = 0; i < requestQueueIds.length - 1; i++)
 		{
-		    int candidateId = Integer.parseInt(candidateIds[i]);
-		    WorkHistoryTransaction transaction = new WorkHistoryTransaction();
-		    workHistoryTransactionService.persistTransaction(transaction, candidateId);
+		    int requestQueueId = Integer.parseInt(requestQueueIds[i]);
+		    User companyUser = (User) request.getSession().getAttribute("LOGGEDIN_USER");
+		    workHistoryTransactionService.createTransaction(requestQueueId,companyUser);
+		    requestQueueService.updateStatusOnId(requestQueueId,RequestStatus.valueOf("Initiated").toString());
 
 		}
 	
