@@ -91,7 +91,8 @@ public class CandidateController {
 		model.setViewName("CandidateDetails");
 		User LoggedInCandidateUser = (User) request.getSession().getAttribute("LOGGEDIN_USER");
 		List<Company> companies = companyService.getCompanyList();
-		companies.remove(LoggedInCandidateUser.getCompany());
+		Company company = LoggedInCandidateUser.getCompany();
+		companies.remove(company);
 		model.addObject("CandidateCompany", companies);
 		return model;
 	}
@@ -101,13 +102,12 @@ public class CandidateController {
 			@RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName,
 			@RequestParam("DOB") Date DOB,
-			@RequestParam("mostRecentEmployer") String mostRecentEmployer,
+			@RequestParam("previousEmployer") Long previousEmployer,
 			@RequestParam("employeeId") String employeeId,
 			@RequestParam("joiningDate") Date joiningDate,
 			@RequestParam("relievingDate") Date relievingDate,
 			@RequestParam("designation") String designation,
 			@RequestParam("CTC") Long CTC,
-			@RequestParam("relievingLetterPDF") File relievingLetterPDF,
 			HttpServletRequest request) {
 
 		ModelAndView model = new ModelAndView();
@@ -118,15 +118,16 @@ public class CandidateController {
 		candidate.setLastName(lastName);
 		candidate.setBirthDate(DOB);
 		
+		candidateEmpDetails.setApproverCompany(companyService.getCompanyByID(previousEmployer));
 		candidateEmpDetails.setEmployeeId(employeeId);
 		candidateEmpDetails.setJoiningDate(joiningDate);
 		candidateEmpDetails.setRelievingDate(relievingDate);
 		candidateEmpDetails.setSalary(CTC);
 		candidateEmpDetails.setDesignation(designation);
-		candidateEmpDetails.setRelievingLetterPDF(relievingLetterPDF);
 		candidateEmpDetails.setRequestStatus(RequestStatus.valueOf("Created").toString());
 		candidateEmpDetails.setUser(candidate);
 		candidateEmpDetails.setCreatedDate(new Date());
+		candidateEmpDetails.setChangeDate(new Date());
 		
 		String successOrFailure = candiateService.addCandidateDetails(candidate);
 		String decidecandidateEmpDetails = candiateService.addCandidateEmploymentDetails(candidateEmpDetails); 

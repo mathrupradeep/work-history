@@ -12,7 +12,7 @@
 	<br> Below is the data from objects
 	<br> First Name :  ${dispCandDetails.firstName} <br>
 	Last Name :  ${dispCandDetails.lastName} <br>
-	Previous employer :  ${dispCandEmpDetails.mostRecentEmployer} <br>
+	Previous employer :  ${dispCandEmpDetails.previousEmployer} <br>
 	EMP ID :  ${dispCandEmpDetails.employeeId} <br>
 	Joining Date :  ${dispCandEmpDetails.joiningDate} <br>
 	Relieving Date :  ${dispCandEmpDetails.relievingDate} <br>
