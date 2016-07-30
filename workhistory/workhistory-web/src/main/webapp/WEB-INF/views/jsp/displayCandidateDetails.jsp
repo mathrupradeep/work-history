@@ -12,11 +12,13 @@
 	<br> Below is the data from objects
 	<br> First Name :  ${dispCandDetails.firstName} <br>
 	Last Name :  ${dispCandDetails.lastName} <br>
+	DOB     : {existingCandDetails.birthDate} <br>
     Previous employer : ${dispCandEmpDetails.approverCompany.regCompanyName}<br>
 	EMP ID :  ${dispCandEmpDetails.employeeId} <br>
 	Joining Date :  ${dispCandEmpDetails.joiningDate} <br>
 	Relieving Date :  ${dispCandEmpDetails.relievingDate} <br>
 	Designation :  ${dispCandEmpDetails.designation} <br>
+	CTC  : {dispCandEmpDetails.salary} <br>
 
 </body>
 </html>

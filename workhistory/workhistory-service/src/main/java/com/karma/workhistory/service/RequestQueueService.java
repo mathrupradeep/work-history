@@ -70,4 +70,13 @@ public class RequestQueueService {
 		requestQueue.setRequestStatus(status);
 		hibernateUtil.update(RequestQueue.class, requestQueue);
 	}
+	
+	public List<RequestQueue> getCandIdInRequestQueue(Long userId) {
+	    String sqlQuery ="select workhistory.request_queue.candidate_id from workhistory.request_queue where workhistory.request_queue.candidate_id =" +userId;
+	    String hqlQuery  = "from RequestQueue where user.id ="+ userId;
+	    /*Query query = session.createQuery(hql);
+	    query.setDouble("userId",userId);
+	    List results = query.list();*/
+	    return hibernateUtil.getListByHQLQuery(RequestQueue.class, hqlQuery);
+	}
 }

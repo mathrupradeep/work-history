@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.karma.workhistory.model.Company;
+import com.karma.workhistory.model.RequestQueue;
 import com.karma.workhistory.model.User;
+import com.karma.workhistory.service.CandidateService;
 import com.karma.workhistory.service.CompanyService;
+import com.karma.workhistory.service.RequestQueueService;
 import com.karma.workhistory.service.UserService;
 import com.karma.workhistory.service.util.UserType;
 
@@ -26,6 +29,9 @@ public class LoginController {
 	
 	@Autowired
 	private CompanyService companyService;
+	
+	@Autowired
+	RequestQueueService requestQueueService;
 	
 
 	@RequestMapping(value = "/submitLoginDetails", method = RequestMethod.POST)
@@ -40,11 +46,23 @@ public class LoginController {
 		    case Candidate:
 			
 			request.getSession().setAttribute("LOGGEDIN_USER", user);
-			User LoggedInCandidateUser = (User) request.getSession().getAttribute("LOGGEDIN_USER");
+			//User LoggedInCandidateUser = (User) request.getSession().getAttribute("LOGGEDIN_USER");
 			List<Company> companies = companyService.getCompanyList();
-			Company company = LoggedInCandidateUser.getCompany();
+			Company company = user.getCompany();
 			companies.remove(company);
 			model.addObject("CandidateCompany", companies);
+			
+			// display page - if candidates details already exists in RQ table -based on id
+			
+			List<RequestQueue> listOfCandidateIds = requestQueueService.getCandIdInRequestQueue(user.getId());
+			System.out.println(listOfCandidateIds);
+			if(listOfCandidateIds != null){
+			    model.setViewName("displayExistingCandDetails");
+			    model.addObject("existingCandEmpDetails", listOfCandidateIds.get(0));
+			    model.addObject("existingCandDetails", user);
+			    break;
+			}
+			
 			model.setViewName("CandidateDetails");
 			model.addObject("message", "Login Successful for UserType Candidate");
 			break;
