@@ -144,6 +144,33 @@ public class HibernateUtil<T, O> extends GeneralDAOImpl implements GeneralDAO{
 
 	}
 	
+	public List<T> getListByHQLQuery(Class<T> type,String query) {
+		if (query == null) {
+			throw new NullPointerException("Query is null");
+		}
+
+		Session session = null;
+		List<T> queryResult = null;
+
+		try {
+			session = getSession();
+			session.getTransaction().begin();
+			queryResult = session.createQuery(query).list();
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		finally {
+			if(session != null){
+					session.close();
+			}
+		}
+		return queryResult;
+
+	}
+	
 	
 	@PostConstruct
 	public void setupSessionFactoryToSuperClass(){
