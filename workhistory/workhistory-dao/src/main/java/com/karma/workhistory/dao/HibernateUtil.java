@@ -1,5 +1,7 @@
 package com.karma.workhistory.dao;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.hibernate.Session;
@@ -112,6 +114,33 @@ public class HibernateUtil<T, O> extends GeneralDAOImpl implements GeneralDAO{
 					session.close();
 			}
 		}
+
+	}
+	
+	public List<T> getListBySQLQuery(Class<T> type,String query) {
+		if (query == null) {
+			throw new NullPointerException("Query is null");
+		}
+
+		Session session = null;
+		List<T> queryResult = null;
+
+		try {
+			session = getSession();
+			session.getTransaction().begin();
+			queryResult = session.createSQLQuery(query).list();
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		finally {
+			if(session != null){
+					session.close();
+			}
+		}
+		return queryResult;
 
 	}
 	
