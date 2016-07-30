@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.karma.workhistory.model.Company;
 import com.karma.workhistory.model.RequestQueue;
 import com.karma.workhistory.model.User;
-import com.karma.workhistory.model.WorkHistoryTransaction;
 import com.karma.workhistory.service.RequestQueueService;
 import com.karma.workhistory.service.WorkHistoryTransactionService;
 import com.karma.workhistory.service.util.RequestStatus;

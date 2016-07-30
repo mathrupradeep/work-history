@@ -48,7 +48,7 @@ public class RequestQueueService {
 		List<RequestQueue> otherCompanyQueues = new ArrayList<RequestQueue>();
 		
 		for(RequestQueue request:queuelist){
-			if(request.getApproverCompany().getId()!=company.getId()){
+			if(request.getUser().getCompany().getId()!=company.getId()){
 				otherCompanyQueues.add(request);
 			}
 		}
@@ -57,10 +57,7 @@ public class RequestQueueService {
     }
     
     public RequestQueue getRequestQueueOnId(Long id){
-		Search serachCriteria = new Search(RequestQueue.class);
-		serachCriteria.addFilterEqual("id", id);
-		RequestQueue requestQueue = (RequestQueue) hibernateUtil.searchUnique(serachCriteria);
-    	return requestQueue;
+    	return hibernateUtil.find(RequestQueue.class,id);
     }
 
 

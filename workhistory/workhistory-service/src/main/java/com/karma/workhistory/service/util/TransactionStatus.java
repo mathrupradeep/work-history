@@ -4,7 +4,7 @@ package com.karma.workhistory.service.util;
  */
 public enum TransactionStatus {
 
-	Created("CREATED"),Accepted("ACCEPTED"),Rejected("REJECTED");
+	Created("CREATED"),Approved("APPROVED"),Rejected("REJECTED");
 	
 	String status;
 	
