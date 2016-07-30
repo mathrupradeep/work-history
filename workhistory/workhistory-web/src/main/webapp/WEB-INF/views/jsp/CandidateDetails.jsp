@@ -50,17 +50,10 @@ $(document).ready(function () {
 		     <c:forEach var="listValue" items="${CandidateCompany}">
                 <option name="previousEmployer" value="${listValue.id}">${listValue.regCompanyName}<br>
             </c:forEach>
-        
 		</select>
 
-	<%-- 	<C:FOREACH var="CandidateCompany" items="${CandidateCompany}">
-			<C:OUT value="${CandidateCompany}">
-			</C:OUT>
-		</C:FOREACH> --%>
 
-           
-            
-		<!-- <INPUT type="button" value="Add Row" onclick="addRow('compDetails')" />  
+    		<!-- <INPUT type="button" value="Add Row" onclick="addRow('compDetails')" />  
     <INPUT type="button" value="Delete Row" onclick="deleteRow('compDetails')" /> 
    <table id="compDetails">
     <tr>
@@ -79,13 +72,12 @@ $(document).ready(function () {
 			<br> <br> <input type="submit" value="Submit"
 				onclick="submitCandidateDetails()"> <input type="reset"
 				value="Clear">
-		</p>
 		
 </form>
 </body>
 
 <script>
-function addRow(compDetails) {
+/* function addRow(compDetails) {
 	 
     var table = document.getElementById(compDetails);
     var rowCount = table.rows.length;
@@ -104,7 +96,7 @@ function addRow(compDetails) {
     relievingLetterCell.innerHTML = relievingLetterCell.innerHTML +' Upload Relieving letter in PDF format <input type="file" name="relievingLetterPDF[]"/> ';
     
     /*  var cell3 = row.insertCell(4);
-    cell3.innerHTML = cell3.innerHTML +' <input type="text" size="20" name="values[]"/> <INPUT type="button"  class="btn_medium" value="Remove" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);" /><br><small><font color="gray">Enter Title</font></small>'; */
+    cell3.innerHTML = cell3.innerHTML +' <input type="text" size="20" name="values[]"/> <INPUT type="button"  class="btn_medium" value="Remove" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);" /><br><small><font color="gray">Enter Title</font></small>'; 
  }
 
  function deleteRow(compDetails) {
@@ -117,7 +109,7 @@ function addRow(compDetails) {
         alert(e);
     }
 }
-
+ */
 function submitCandidateDetails() {
        	document.forms[0].action = "${pageContext.request.contextPath}/submitCandidateDetails";
         document.forms[0].submit();

@@ -89,11 +89,6 @@ public class CandidateController {
 	    	//hard code email id and phone number for the logged in candidate
 		ModelAndView model = new ModelAndView();
 		model.setViewName("CandidateDetails");
-		User LoggedInCandidateUser = (User) request.getSession().getAttribute("LOGGEDIN_USER");
-		List<Company> companies = companyService.getCompanyList();
-		Company company = LoggedInCandidateUser.getCompany();
-		companies.remove(company);
-		model.addObject("CandidateCompany", companies);
 		return model;
 	}
 

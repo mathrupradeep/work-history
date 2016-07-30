@@ -1,5 +1,7 @@
 package com.karma.web.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.karma.workhistory.model.Company;
 import com.karma.workhistory.model.User;
+import com.karma.workhistory.service.CompanyService;
 import com.karma.workhistory.service.UserService;
 import com.karma.workhistory.service.util.UserType;
 
@@ -19,6 +23,10 @@ public class LoginController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	private CompanyService companyService;
+	
 
 	@RequestMapping(value = "/submitLoginDetails", method = RequestMethod.POST)
 	public ModelAndView submitLogin(@RequestParam("userName") String userName,
@@ -30,9 +38,15 @@ public class LoginController {
 		    UserType userType = UserType.valueOf(user.getUserType());
 		    switch(userType){
 		    case Candidate:
+			
+			request.getSession().setAttribute("LOGGEDIN_USER", user);
+			User LoggedInCandidateUser = (User) request.getSession().getAttribute("LOGGEDIN_USER");
+			List<Company> companies = companyService.getCompanyList();
+			Company company = LoggedInCandidateUser.getCompany();
+			companies.remove(company);
+			model.addObject("CandidateCompany", companies);
 			model.setViewName("CandidateDetails");
 			model.addObject("message", "Login Successful for UserType Candidate");
-			request.getSession().setAttribute("LOGGEDIN_USER", user);
 			break;
 
 		    case HR :
@@ -47,6 +61,9 @@ public class LoginController {
 		    default:
 			break;
 		    }
+		}
+		else{
+		    model.setViewName("login");
 		}
 			
 		return model;
