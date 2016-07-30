@@ -44,6 +44,10 @@ public class WorkHistoryTransaction implements Serializable {
 	@JoinColumn(name="requestor_company_hr_id")
 	private User requestorCompanyHr;
 	
+	@ManyToOne
+	@JoinColumn(name="approver_company_hr_id")
+	private User approverCompanyHr;
+	
 
 	public Long getId() {
 		return id;
@@ -91,5 +95,13 @@ public class WorkHistoryTransaction implements Serializable {
 
 	public void setRequestorCompanyHr(User requestorCompanyHr) {
 		this.requestorCompanyHr = requestorCompanyHr;
+	}
+
+	public User getApproverCompanyHr() {
+		return approverCompanyHr;
+	}
+
+	public void setApproverCompanyHr(User approvedCompanyHr) {
+		this.approverCompanyHr = approvedCompanyHr;
 	}
 }

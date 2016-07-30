@@ -1,9 +1,6 @@
 package com.karma.web.controller;
 
-import java.io.File;
 import java.util.Date;
-import java.util.List;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.karma.workhistory.model.Company;
 import com.karma.workhistory.model.RequestInitiator;
 import com.karma.workhistory.model.RequestQueue;
 import com.karma.workhistory.model.User;
