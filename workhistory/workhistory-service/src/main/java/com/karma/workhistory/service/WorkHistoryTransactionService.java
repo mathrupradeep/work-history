@@ -23,7 +23,7 @@ public class WorkHistoryTransactionService {
 	private RequestQueueService requestQueueService;
 	
 	@Transactional
-	public void createTransaction(int requestQueueId,User companyUser){
+	public void createTransaction(Long requestQueueId,User companyUser){
 		 WorkHistoryTransaction transaction = new WorkHistoryTransaction();
 		 transaction.setStatus(TransactionStatus.valueOf("Created").toString());
 		 transaction.setCreatedDate(new Date());

@@ -5,9 +5,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,7 +24,8 @@ public class WorkHistoryTransaction implements Serializable {
 	
 	@Id
 	@Column(name="id")
-	private int id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	
 	@Column(name="status")
 	private String status;
@@ -43,11 +45,11 @@ public class WorkHistoryTransaction implements Serializable {
 	private User requestorCompanyHr;
 	
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

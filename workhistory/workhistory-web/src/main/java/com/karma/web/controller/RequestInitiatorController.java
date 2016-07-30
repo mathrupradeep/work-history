@@ -41,11 +41,11 @@ public class RequestInitiatorController {
 	}
 	
 	@RequestMapping("submitrequestInitator")
-	public ModelAndView submitrequestInitator(HttpServletRequest request,@RequestParam String[] requestQueueIds){
+	public ModelAndView submitrequestInitator(HttpServletRequest request,@RequestParam Long[] requestQueueIds){
 
-		for( int i = 0; i < requestQueueIds.length - 1; i++)
+		for( int i = 0; i < requestQueueIds.length; i++)
 		{
-		    int requestQueueId = Integer.parseInt(requestQueueIds[i]);
+		    Long requestQueueId = requestQueueIds[i];
 		    User companyUser = (User) request.getSession().getAttribute("LOGGEDIN_USER");
 		    workHistoryTransactionService.createTransaction(requestQueueId,companyUser);
 		    requestQueueService.updateStatusOnId(requestQueueId,RequestStatus.valueOf("Initiated").toString());

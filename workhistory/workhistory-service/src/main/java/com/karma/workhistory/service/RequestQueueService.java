@@ -48,9 +48,7 @@ public class RequestQueueService {
 		List<RequestQueue> otherCompanyQueues = new ArrayList<RequestQueue>();
 		
 		for(RequestQueue request:queuelist){
-			Company requestCompany = null;
-			requestCompany = userService.getUserByEmailID(request.getUser().getEmailId()).getCompany();
-			if(requestCompany.getId()!=company.getId()){
+			if(request.getApproverCompany().getId()!=company.getId()){
 				otherCompanyQueues.add(request);
 			}
 		}
@@ -58,7 +56,7 @@ public class RequestQueueService {
 		return queuelist;
     }
     
-    public RequestQueue getRequestQueueOnId(int id){
+    public RequestQueue getRequestQueueOnId(Long id){
 		Search serachCriteria = new Search(RequestQueue.class);
 		serachCriteria.addFilterEqual("id", id);
 		RequestQueue requestQueue = (RequestQueue) hibernateUtil.searchUnique(serachCriteria);
@@ -66,7 +64,7 @@ public class RequestQueueService {
     }
 
 
-	public void updateStatusOnId(int requestQueueId, String status) {
+	public void updateStatusOnId(Long requestQueueId, String status) {
 		RequestQueue requestQueue = getRequestQueueOnId(requestQueueId);
 		requestQueue.setChangeDate(new Date());
 		requestQueue.setRequestStatus(status);
