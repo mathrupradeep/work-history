@@ -64,6 +64,7 @@ public class CandidateController {
 		String message = candiateService.addCandidate(candidate);
 		requestInitiator.setCandidateId(userService.getUserByEmailID(mailId));
 		requestInitiator.setHrId(userService.getUserByEmailID(hrMailId));
+		//pradeep, why is this required? the string - its null 
 		String processInitiated = requestInitiatorService.requestInitiator(requestInitiator);
 		System.out.println("processInitiated = "+processInitiated);
 		if (message == null){
@@ -73,20 +74,20 @@ public class CandidateController {
 		else
 			message = "Error adding candidate";
 		model.addObject("msg", message);
-		model.setViewName("addCandidate");
+		model.setViewName("Dashboard");
 		return model;
 
 	}
 	
 	
-	@RequestMapping(value = "/fillInCandidateDetails")
+	/*@RequestMapping(value = "/fillInCandidateDetails")
 	public ModelAndView fillInCandidateDetails(HttpServletRequest request) {
 
 	    	//hard code email id and phone number for the logged in candidate
 		ModelAndView model = new ModelAndView();
 		model.setViewName("CandidateDetails");
 		return model;
-	}
+	}*/
 
 	@RequestMapping(value = "/submitCandidateDetails")
 	public ModelAndView submitCandidateDetails(

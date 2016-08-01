@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.karma.workhistory.model.Company;
 import com.karma.workhistory.model.RequestQueue;
 import com.karma.workhistory.model.User;
-import com.karma.workhistory.service.CandidateService;
 import com.karma.workhistory.service.CompanyService;
 import com.karma.workhistory.service.RequestQueueService;
 import com.karma.workhistory.service.UserService;
@@ -44,16 +43,14 @@ public class LoginController {
 		    UserType userType = UserType.valueOf(user.getUserType());
 		    switch(userType){
 		    case Candidate:
-			
 			request.getSession().setAttribute("LOGGEDIN_USER", user);
 			//User LoggedInCandidateUser = (User) request.getSession().getAttribute("LOGGEDIN_USER");
 			List<Company> companies = companyService.getCompanyList();
 			Company company = user.getCompany();
 			companies.remove(company);
 			model.addObject("CandidateCompany", companies);
-			
-			// display page - if candidates details already exists in RQ table -based on id
-			
+			/* display details of the candidates who's details are already entered into the DB,
+			Based on Candidate ID*/
 			List<RequestQueue> listOfCandidateIds = requestQueueService.getCandIdInRequestQueue(user.getId());
 			System.out.println(listOfCandidateIds);
 			if(listOfCandidateIds != null){
@@ -62,7 +59,6 @@ public class LoginController {
 			    model.addObject("existingCandDetails", user);
 			    break;
 			}
-			
 			model.setViewName("CandidateDetails");
 			model.addObject("message", "Login Successful for UserType Candidate");
 			break;

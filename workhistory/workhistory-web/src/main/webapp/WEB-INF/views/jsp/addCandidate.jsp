@@ -19,14 +19,13 @@
 
 	<form name="addCandidateForm" id="candidateForm" method="post">
 		<br>
-		<h3>
 			E-Mail ID &nbsp;<input type="text" name="mailId"> <br>
 			Phone Number &nbsp; </br> <input type="text" name="phoneNumber"> <input
 				type="submit" value="Add Candidate" onclick="callSubmit()">
 			<input type="reset" value="Clear">
-		</h3>
 	</form>
 </body>
+
 <script>
 	function callSubmit() {
 		document.forms[0].action = "${pageContext.request.contextPath}/submitCandidateBasicInfo";
