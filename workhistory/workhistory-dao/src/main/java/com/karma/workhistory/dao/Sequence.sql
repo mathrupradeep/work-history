@@ -1,31 +1,21 @@
 --Adding candidate_id coloumn & adding the foreign key constraint
-ALTER TABLE workhistory.request_queue 
-add column candidate_id int;
-
-ALTER TABLE workhistory.request_queue 
-ADD CONSTRAINT fk_candidate_id 
-FOREIGN KEY (candidate_id) 
-REFERENCES workhistory.user 
-ON DELETE CASCADE;
+CREATE SEQUENCE workhistory.usersequence   START 3;
+ALTER TABLE workhistory.user ALTER COLUMN id SET DEFAULT nextval('workhistory.usersequence');
 
 
-CREATE SEQUENCE usersequence   START 3;
-ALTER TABLE workhistory.user ALTER COLUMN id SET DEFAULT nextval('usersequence');
+CREATE SEQUENCE workhistory.requestqueuesequence   START 1;
+ALTER TABLE workhistory.request_queue ALTER COLUMN id SET DEFAULT nextval('workhistory.requestqueuesequence');
 
 
-CREATE SEQUENCE requestqueuesequence   START 1;
-ALTER TABLE workhistory.request_queue ALTER COLUMN id SET DEFAULT nextval('requestqueuesequence');
+CREATE SEQUENCE workhistory.requestinitiatorsequence   START 1;
+ALTER TABLE workhistory.request_initiator ALTER COLUMN id SET DEFAULT nextval('workhistory.requestinitiatorsequence');
 
 
-CREATE SEQUENCE requestinitiatorsequence   START 1;
-ALTER TABLE workhistory.request_initiator ALTER COLUMN id SET DEFAULT nextval('requestinitiatorsequence');
+CREATE SEQUENCE workhistory.companysequence   START 1;
+ALTER TABLE workhistory.company ALTER COLUMN id SET DEFAULT nextval('workhistory.companysequence');
 
-
-CREATE SEQUENCE companysequence   START 1;
-ALTER TABLE workhistory.company ALTER COLUMN id SET DEFAULT nextval('companysequence');
-
-CREATE SEQUENCE workhistorytransaction   START 1;
-ALTER TABLE workhistory.work_history_transaction ALTER COLUMN id SET DEFAULT nextval('workhistorytransaction');
+CREATE SEQUENCE workhistory.workhistorytransaction   START 1;
+ALTER TABLE workhistory.work_history_transaction ALTER COLUMN id SET DEFAULT nextval('workhistory.workhistorytransaction');
 
 
 insert into workhistory.company values 

@@ -53,7 +53,7 @@ public class LoginController {
 			Based on Candidate ID*/
 			List<RequestQueue> listOfCandidateIds = requestQueueService.getCandIdInRequestQueue(user.getId());
 			System.out.println(listOfCandidateIds);
-			if(listOfCandidateIds != null){
+			if(listOfCandidateIds != null && listOfCandidateIds.size()>0){
 			    model.setViewName("displayExistingCandDetails");
 			    model.addObject("existingCandEmpDetails", listOfCandidateIds.get(0));
 			    model.addObject("existingCandDetails", user);

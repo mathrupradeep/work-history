@@ -9,16 +9,16 @@
 </head>
 <body>
 
-	<br> Below is the data from objects
+	<br> Thanks for providing us info. Here are the details entered by you. 
 	<br> First Name :  ${dispCandDetails.firstName} <br>
 	Last Name :  ${dispCandDetails.lastName} <br>
-	DOB     : {existingCandDetails.birthDate} <br>
+	DOB     : ${dispCandDetails.birthDate} <br>
     Previous employer : ${dispCandEmpDetails.approverCompany.regCompanyName}<br>
 	EMP ID :  ${dispCandEmpDetails.employeeId} <br>
 	Joining Date :  ${dispCandEmpDetails.joiningDate} <br>
 	Relieving Date :  ${dispCandEmpDetails.relievingDate} <br>
 	Designation :  ${dispCandEmpDetails.designation} <br>
-	CTC  : {dispCandEmpDetails.salary} <br>
+	CTC  : ${dispCandEmpDetails.salary} <br>
 
 </body>
 </html>

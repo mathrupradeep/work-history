@@ -10,16 +10,16 @@
 <body>
 
     
-    <br> Below is the data from objects
+    <br> Thanks for coming back! Here are the details entered by you.
     <br> First Name :  ${existingCandDetails.firstName} <br>
     Last Name :  ${existingCandDetails.lastName} <br>
-    DOB     : {existingCandDetails.birthDate} <br>
+    DOB     : ${existingCandDetails.birthDate} <br>
     Previous employer : ${existingCandEmpDetails.approverCompany.regCompanyName}<br>
     EMP ID :  ${existingCandEmpDetails.employeeId} <br>
     Joining Date :  ${existingCandEmpDetails.joiningDate} <br>
     Relieving Date :  ${existingCandEmpDetails.relievingDate} <br>
     Designation :  ${existingCandEmpDetails.designation} <br>
-    CTC  : {existingCandEmpDetails.salary} <br>
+    CTC  : ${existingCandEmpDetails.salary} <br>
 
 
 </body>

@@ -66,7 +66,6 @@ public class CandidateController {
 		requestInitiator.setHrId(userService.getUserByEmailID(hrMailId));
 		//pradeep, why is this required? the string - its null 
 		String processInitiated = requestInitiatorService.requestInitiator(requestInitiator);
-		System.out.println("processInitiated = "+processInitiated);
 		if (message == null){
 			message = "Candidate Added Sucessfully & Email will be sent";
 			sendEmail.sendEmailFunction(candidate);
@@ -128,9 +127,9 @@ public class CandidateController {
 		    successOrFailure = "Candidate Details Added Sucessfully";
 		}
 			
-		else
+		else{
 			successOrFailure = "Error adding candidate Details";
-		
+		}
 		model.addObject("msg", successOrFailure);
 		model.setViewName("displayCandidateDetails");
 		model.addObject("dispCandEmpDetails", candidateEmpDetails);
