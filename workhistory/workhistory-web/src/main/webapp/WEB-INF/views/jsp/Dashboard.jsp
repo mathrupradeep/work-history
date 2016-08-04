@@ -10,8 +10,8 @@
     <form>
         <input type="submit" value="Add Candidate" onclick="addCandidate()">
         <input type="submit" value="Request Queue" onclick="requestQueue()">
-        <input type="submit" value="Transactions" onclick="openAllTransactions()">
-        <input type="submit" value="Verfication Queue" onclick="verificationQueue()">
+        <input type="submit" value="Report" onclick="openAllTransactions()">
+        <input type="submit" value="Pending Approval" onclick="verificationQueue()">
     </form>
 </body>
 
@@ -23,19 +23,19 @@
     
     //action path needs to be set 
     function requestQueue() {
-        document.forms[0].action = "${pageContext.request.contextPath}/ ";
+        document.forms[0].action = "${pageContext.request.contextPath}/initiateRequest";
         document.forms[0].submit();
     }
     
     //action path needs to be set
     function openAllTransactions() {
-        document.forms[0].action = "${pageContext.request.contextPath}/ ";
+        document.forms[0].action = "${pageContext.request.contextPath}/";
         document.forms[0].submit();
     }
     
     //action path needs to be set
     function verificationQueue() {
-        document.forms[0].action = "${pageContext.request.contextPath}/ ";
+        document.forms[0].action = "${pageContext.request.contextPath}/listTransactionsForAction";
         document.forms[0].submit();
     }
 </script>
