@@ -16,6 +16,7 @@ ALTER TABLE workhistory.company ALTER COLUMN id SET DEFAULT nextval('workhistory
 
 CREATE SEQUENCE workhistory.workhistorytransaction   START 1;
 ALTER TABLE workhistory.work_history_transaction ALTER COLUMN id SET DEFAULT nextval('workhistory.workhistorytransaction');
+ALTER TABLE workhistory.work_history_transaction ADD CONSTRAINT uniqueRequestQueue UNIQUE (request_queue_id);
 
 
 insert into workhistory.company values 

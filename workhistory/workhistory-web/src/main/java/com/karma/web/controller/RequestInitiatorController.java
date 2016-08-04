@@ -52,7 +52,7 @@ public class RequestInitiatorController {
 		}
 	
 		ModelAndView model = new ModelAndView();
-		model.setViewName("InitiateRequest");
+		model.setViewName("Dashboard");
 		model.addObject("lists", null);
 		return model;
 	}

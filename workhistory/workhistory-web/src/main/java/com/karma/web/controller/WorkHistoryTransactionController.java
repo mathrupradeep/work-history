@@ -53,7 +53,7 @@ public class WorkHistoryTransactionController {
 		}
 	
 		ModelAndView model = new ModelAndView();
-		model.setViewName("InitiateRequest");
+		model.setViewName("Dashboard");
 		model.addObject("lists", null);
 		return model;
 	}
@@ -72,7 +72,7 @@ public class WorkHistoryTransactionController {
 		}
 	
 		ModelAndView model = new ModelAndView();
-		model.setViewName("InitiateRequest");
+		model.setViewName("Dashboard");
 		model.addObject("lists", null);
 		return model;
 	}
