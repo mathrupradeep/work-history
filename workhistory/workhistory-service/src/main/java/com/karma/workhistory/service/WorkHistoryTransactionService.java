@@ -53,9 +53,9 @@ public class WorkHistoryTransactionService {
 		
 	}
 	
-	 public List<WorkHistoryTransaction> getWorkHistoryTransactinOnCompany(String status,Company company){
+	 public List<WorkHistoryTransaction> getWorkHistoryTransactinOnCompany(Company company){
 
-		    String hqlQuery ="FROM WorkHistoryTransaction wht where wht.requestQueue IN (FROM RequestQueue RQ where RQ.approverCompany.id="+company.getId()+")";
+		    String hqlQuery ="FROM WorkHistoryTransaction wht where wht.requestQueue IN (FROM RequestQueue RQ where RQ.user.company.id="+company.getId()+")";
 			List<WorkHistoryTransaction> queuelist = hibernateUtil.getListByHQLQuery(WorkHistoryTransaction.class, hqlQuery);
 			return queuelist;
 	    }

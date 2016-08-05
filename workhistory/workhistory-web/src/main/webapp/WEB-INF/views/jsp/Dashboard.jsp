@@ -29,7 +29,7 @@
     
     //action path needs to be set
     function openAllTransactions() {
-        document.forms[0].action = "${pageContext.request.contextPath}/";
+        document.forms[0].action = "${pageContext.request.contextPath}/listTransactions";
         document.forms[0].submit();
     }
     
@@ -39,4 +39,5 @@
         document.forms[0].submit();
     }
 </script>
+<%@ include file="logout.jsp" %>
 </html>

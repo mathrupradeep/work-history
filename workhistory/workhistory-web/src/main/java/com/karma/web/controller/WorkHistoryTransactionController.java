@@ -76,4 +76,16 @@ public class WorkHistoryTransactionController {
 		model.addObject("lists", null);
 		return model;
 	}
+	
+	@RequestMapping("listTransactions")
+	public ModelAndView getWorkHistoryTransactinOnCompany(HttpServletRequest request){
+		
+		User userData = (User) request.getSession().getAttribute("LOGGEDIN_USER");
+		Company company = userData.getCompany();
+		List<WorkHistoryTransaction> transactionList = workHistoryTransactionService.getWorkHistoryTransactinOnCompany(company);
+		ModelAndView model = new ModelAndView();
+		model.setViewName("transactionsList");
+		model.addObject("lists", transactionList);
+		return model;
+	}
 }
