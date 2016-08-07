@@ -27,7 +27,7 @@ public class WorkHistoryTransactionService {
 	@Transactional
 	public void createTransaction(Long requestQueueId,User companyUser){
 		 WorkHistoryTransaction transaction = new WorkHistoryTransaction();
-		 transaction.setStatus(TransactionStatus.valueOf("Created").toString());
+		 transaction.setStatus(TransactionStatus.valueOf("Pending").toString());
 		 transaction.setCreatedDate(new Date());
 		 transaction.setChangeDate(new Date());
 		 RequestQueue requestQueue = requestQueueService.getRequestQueueOnId(requestQueueId);
@@ -53,9 +53,16 @@ public class WorkHistoryTransactionService {
 		
 	}
 	
-	 public List<WorkHistoryTransaction> getWorkHistoryTransactinOnCompany(Company company){
+	 public List<WorkHistoryTransaction> getWorkHistoryTransactinofCompany(String status,Company company){
 
-		    String hqlQuery ="FROM WorkHistoryTransaction wht where wht.requestQueue IN (FROM RequestQueue RQ where RQ.user.company.id="+company.getId()+")";
+		    String hqlQuery = null;
+		 
+		    if(status==null){
+		    		hqlQuery ="FROM WorkHistoryTransaction wht where wht.requestQueue IN (FROM RequestQueue RQ where RQ.user.company.id="+company.getId()+")";
+		    }
+		    else{
+		    	hqlQuery ="FROM WorkHistoryTransaction wht where wht.status='"+status+"' and wht.requestQueue IN (FROM RequestQueue RQ where RQ.user.company.id="+company.getId()+")";
+		    }
 			List<WorkHistoryTransaction> queuelist = hibernateUtil.getListByHQLQuery(WorkHistoryTransaction.class, hqlQuery);
 			return queuelist;
 	    }

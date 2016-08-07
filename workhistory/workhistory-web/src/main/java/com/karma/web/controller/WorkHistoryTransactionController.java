@@ -82,7 +82,31 @@ public class WorkHistoryTransactionController {
 		
 		User userData = (User) request.getSession().getAttribute("LOGGEDIN_USER");
 		Company company = userData.getCompany();
-		List<WorkHistoryTransaction> transactionList = workHistoryTransactionService.getWorkHistoryTransactinOnCompany(company);
+		List<WorkHistoryTransaction> transactionList = workHistoryTransactionService.getWorkHistoryTransactinofCompany(null,company);
+		ModelAndView model = new ModelAndView();
+		model.setViewName("transactionsList");
+		model.addObject("lists", transactionList);
+		return model;
+	}
+	
+	@RequestMapping("listAllApprovedTransactions")
+	public ModelAndView getAllApprovedTransactionsOnCompany(HttpServletRequest request){
+		
+		User userData = (User) request.getSession().getAttribute("LOGGEDIN_USER");
+		Company company = userData.getCompany();
+		List<WorkHistoryTransaction> transactionList = workHistoryTransactionService.getWorkHistoryTransactinofCompany(TransactionStatus.valueOf("Approved").toString(),company);
+		ModelAndView model = new ModelAndView();
+		model.setViewName("transactionsList");
+		model.addObject("lists", transactionList);
+		return model;
+	}
+	
+	@RequestMapping("listAllRejectedTransactions")
+	public ModelAndView getAllRejectedTransactionsOnCompany(HttpServletRequest request){
+		
+		User userData = (User) request.getSession().getAttribute("LOGGEDIN_USER");
+		Company company = userData.getCompany();
+		List<WorkHistoryTransaction> transactionList = workHistoryTransactionService.getWorkHistoryTransactinofCompany(TransactionStatus.valueOf("Rejected").toString(),company);
 		ModelAndView model = new ModelAndView();
 		model.setViewName("transactionsList");
 		model.addObject("lists", transactionList);

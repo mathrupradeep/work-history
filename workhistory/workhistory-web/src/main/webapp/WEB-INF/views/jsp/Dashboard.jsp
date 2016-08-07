@@ -10,7 +10,7 @@
     <form>
         <input type="submit" value="Add Candidate" onclick="addCandidate()">
         <input type="submit" value="Request Queue" onclick="requestQueue()">
-        <input type="submit" value="Report" onclick="openAllTransactions()">
+        <input type="submit" value="Transaction History" onclick="openAllTransactions()">
         <input type="submit" value="Pending Approval" onclick="verificationQueue()">
     </form>
 </body>
