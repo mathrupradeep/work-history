@@ -48,7 +48,7 @@ $(document).ready(function () {
 			</c:if>
 		</div>
 	    <div>
-            <h2 class="col-md-10">Please enter Candidate Details</h2>
+            <h2 class="col-md-10">Please Enter Your Details</h2>
         </div>
         <div class="row">
             <div class="form-group col-md-12">
@@ -97,6 +97,7 @@ $(document).ready(function () {
                 </div>
             </div>
         </div>		
+
     		<!-- <INPUT type="button" value="Add Row" onclick="addRow('compDetails')" />  
     <INPUT type="button" value="Delete Row" onclick="deleteRow('compDetails')" /> 
    <table id="compDetails">
