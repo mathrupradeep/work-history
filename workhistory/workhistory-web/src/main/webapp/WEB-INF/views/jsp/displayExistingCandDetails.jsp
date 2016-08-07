@@ -23,4 +23,5 @@
 
 
 </body>
+<%@ include file="logout.jsp" %>
 </html>

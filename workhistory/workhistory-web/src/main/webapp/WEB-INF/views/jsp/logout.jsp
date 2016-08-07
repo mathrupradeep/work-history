@@ -5,9 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style>
+.logoutLblPos{
+   position:fixed;
+   right:10px;
+   top:15px;
+}
+</style>
 </head>
 <body>
+  <label class="logoutLblPos">
    <input type="submit" value="Logout" onclick="logout()">
+  </label>
 </body>
 <script>
 function logout(){

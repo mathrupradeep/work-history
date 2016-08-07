@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Page</title>
 </head>
 <body>
 
@@ -15,10 +15,8 @@
 		<c:if test="${not empty message}">
 			${message}
 		</c:if>
-login page 
-	
-	user name &nbsp;<input type="text" name="userName" > <br>
-	password &nbsp;<input type="password" name="password" > <br>
+	User Name &nbsp;<input type="text" name="userName" > <br>
+	Password &nbsp;<input type="password" name="password" > <br>
    <br>
    <input type="submit" value="Login" onclick="submitLogin()">
    <input type="reset" value="Clear">
@@ -32,5 +30,4 @@ function submitLogin(){
 }
 
 </script>
-<%@ include file="logout.jsp" %>
 </html>

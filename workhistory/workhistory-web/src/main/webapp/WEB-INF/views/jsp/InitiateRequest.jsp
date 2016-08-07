@@ -24,4 +24,5 @@ function submitrequestInitatorForm() {
     document.forms[0].submit();
 } 
 </script>
+<%@ include file="logout.jsp" %>
 </html>
