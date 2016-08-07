@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
 .logoutLblPos{
-   position:fixed;
+   position: absolute;
    right:10px;
    top:15px;
 }
@@ -15,7 +15,7 @@
 </head>
 <body>
   <label class="logoutLblPos">
-   <input type="submit" value="Logout" onclick="logout()">
+   <input type="submit" value="Logout" class="btn btn-primary" onclick="logout()">
   </label>
 </body>
 <script>

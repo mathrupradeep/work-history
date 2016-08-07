@@ -6,22 +6,73 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login Page</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+	.wrapper {
+		margin: 20px auto;
+	}
+</style>
 </head>
 <body>
 
-<form method="post" id="loginForm">
+<div class="container">
+	<div class="wrapper">
+				<form name="authForm" ng-controller="authCtrl" method="post" id="loginForm" class="form-horizontal">
+<%-- 				   <div class="row">
+					<div>
+						<label> <c:if test="${not empty message}">
+			${message}
+		</c:if>
+						</label>
+					</div>
+				</div> --%>
+				<div>
+					<h2 class="col-md-10">Login to Workhistory</h2>
+				</div>
+                   <div class="row">
+                       <div class="form-group col-md-12">
+                           <label class="col-md-2 control-label">Email ID</label>
+                           <div class="col-md-7">
+                               <input type="email" name="userName" class="form-control" ng-model="email" placeholder="Email" required />
+                           </div>
+                       </div>
+                   </div>
+                   <div class="row">
+                       <div class="form-group col-md-12">
+                           <label class="col-md-2 control-label">Password</label>
+                           <div class="col-md-7">
+                               <input type="password" name="password" class="form-control" ng-model="phonenumber" placeholder="Password" required />
+                           </div>
+                       </div>
+                   </div>
+                   <div>
+                       <div class="form-actions pull-right col-md-10 col-lg-10">
+                       		<input type="submit" class="btn btn-primary" value="Login" onclick="submitLogin()" />
+                       		<input type="reset" class="btn btn-primary" value="Clear" />
+ <!--                           <button ng-click="authenticate(email, phonenumber)" ng-disabled="authForm.$invalid" class="btn btn-primary">
+                               Add Candidate
+                           </button>
+                           <button ng-click="clearData(email, phonenumber)" ng-disabled="authForm.$invalid" class="btn btn-primary">
+                               Clear
+                           </button> -->
+                       </div>
+                   </div>
+               </form>		
+	</div>
+</div>
+<%-- <form class="form-horizontal" method="post" id="loginForm">
 <br>
 <h3>
 		<c:if test="${not empty message}">
 			${message}
 		</c:if>
-	User Name &nbsp;<input type="text" name="userName" > <br>
+	<label class="">User Name</label><input type="text" name="userName" > <br>
 	Password &nbsp;<input type="password" name="password" > <br>
    <br>
    <input type="submit" value="Login" onclick="submitLogin()">
    <input type="reset" value="Clear">
 </h3>
-</form>
+</form> --%>
 </body>
 <script>
 function submitLogin(){

@@ -4,15 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+	.wrapper {
+		margin: 40px auto;
+	}
+</style>
 <title>Dashboard</title>
 </head>
-<body>
-<h2>Welcome ${firstName}!</h2>
-    <form>
-        <input type="submit" value="Add Candidate" onclick="addCandidate()">
-        <input type="submit" value="Request Queue" onclick="requestQueue()">
-        <input type="submit" value="Transaction History" onclick="openAllTransactions()">
-        <input type="submit" value="Pending Approval" onclick="verificationQueue()">
+<body style="background: #ececec" class="wrapper">
+	<div><h3 class="col-md-2 control-label">Welcome ${firstName}!</h3></div>
+    <form class="form-horizontal">
+    	<div class="form-group col-md-12">
+        <input type="submit" class="btn btn-primary" value="Add Candidate" onclick="addCandidate()">
+        <input type="submit" class="btn btn-primary" value="Request Queue" onclick="requestQueue()">
+        <input type="submit" class="btn btn-primary" value="Transaction History" onclick="openAllTransactions()">
+        <input type="submit" class="btn btn-primary"  value="Pending Approval" onclick="verificationQueue()">
+        </div>
     </form>
 </body>
 
