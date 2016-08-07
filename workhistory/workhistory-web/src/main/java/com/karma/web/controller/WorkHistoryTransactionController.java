@@ -32,7 +32,7 @@ public class WorkHistoryTransactionController {
 		
 		User userData = (User) request.getSession().getAttribute("LOGGEDIN_USER");
 		Company company = userData.getCompany();
-		List<WorkHistoryTransaction> transactionList = workHistoryTransactionService.getWorkHistoryTransactinOnStatus("Created",company);
+		List<WorkHistoryTransaction> transactionList = workHistoryTransactionService.getWorkHistoryTransactinOnStatus("Pending",company);
 		ModelAndView model = new ModelAndView();
 		model.setViewName("transactionsListForAction");
 		model.addObject("lists", transactionList);
