@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>display Candidate Details</title>
+<title>Display Candidate Details</title>
 </head>
 <body>
 

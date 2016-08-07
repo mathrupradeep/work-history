@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Dashboard for HR</title>
+<title>Dashboard</title>
 </head>
 <body>
+<h2>Welcome ${firstName}!</h2>
     <form>
         <input type="submit" value="Add Candidate" onclick="addCandidate()">
         <input type="submit" value="Request Queue" onclick="requestQueue()">

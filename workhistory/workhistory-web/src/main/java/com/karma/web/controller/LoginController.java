@@ -65,7 +65,7 @@ public class LoginController {
 
 		    case HR :
 			model.setViewName("Dashboard");
-			model.addObject("message", "Login Successful for UserType HR");
+			model.addObject("firstName", user.getFirstName());
 			request.getSession().setAttribute("LOGGEDIN_USER", user);
 			break;
 			
