@@ -54,7 +54,7 @@ $(document).ready(function () {
             <div class="form-group col-md-12">
                 <label class="col-md-2 control-label">First Name</label>
                 <div class="col-md-7">
-                    <input type="text" name="firstName" class="form-control" ng-model="email" placeholder="Email" required />
+                    <input type="text" name="firstName" class="form-control" placeholder="First Name" required />
                 </div>
             </div>
         </div>
@@ -62,15 +62,7 @@ $(document).ready(function () {
             <div class="form-group col-md-12">
                 <label class="col-md-2 control-label">Last Name</label>
                 <div class="col-md-7">
-                    <input type="text" name="firstName" class="form-control" ng-model="email" placeholder="Email" required />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-12">
-                <label class="col-md-2 control-label">First Name</label>
-                <div class="col-md-7">
-                    <input type="text" name="lastName" class="form-control" ng-model="email" placeholder="Email" required />
+                    <input type="text" name="firstName" class="form-control" ng-model="email" placeholder="Last Name" required />
                 </div>
             </div>
         </div>
@@ -78,7 +70,7 @@ $(document).ready(function () {
             <div class="form-group col-md-12">
                 <label class="col-md-2 control-label">DOB</label>
                 <div class="col-md-7">
-                    <input type="date" name="DOB" class="form-control" ng-model="email" placeholder="Date" required />
+                    <input type="date" name="DOB" class="form-control"  placeholder="Date" required />
                 </div>
             </div>
         </div>
@@ -107,7 +99,7 @@ $(document).ready(function () {
             <div class="form-group col-md-12">
                 <label class="col-md-2 control-label">EMP ID</label>
                 <div class="col-md-7">
-                    <input type="text" name="employeeId" class="form-control" ng-model="email" placeholder="Email" required />
+                    <input type="text" name="employeeId" class="form-control" placeholder="EMP ID" required />
                 </div>
             </div>
         </div>
@@ -115,7 +107,7 @@ $(document).ready(function () {
             <div class="form-group col-md-12">
                 <label class="col-md-2 control-label">Joining Date</label>
                 <div class="col-md-7">
-                    <input type="date" name="joiningDate" class="form-control" ng-model="email" placeholder="Email" required />
+                    <input type="date" name="joiningDate" class="form-control" required />
                 </div>
             </div>
         </div>
@@ -123,7 +115,7 @@ $(document).ready(function () {
             <div class="form-group col-md-12">
                 <label class="col-md-2 control-label"> Relieving Date</label>
                 <div class="col-md-7">
-                    <input type="date" name="relievingDate" class="form-control" ng-model="email" placeholder="Email" required />
+                    <input type="date" name="relievingDate" class="form-control" required />
                 </div>
             </div>
         </div>
@@ -131,7 +123,7 @@ $(document).ready(function () {
             <div class="form-group col-md-12">
                 <label class="col-md-2 control-label">Designation</label>
                 <div class="col-md-7">
-                    <input type="text" name="designation" class="form-control" ng-model="email" placeholder="Email" required />
+                    <input type="text" name="designation" class="form-control" placeholder="Designation" required />
                 </div>
             </div>
         </div>
@@ -139,7 +131,7 @@ $(document).ready(function () {
             <div class="form-group col-md-12">
                 <label class="col-md-2 control-label">CTC</label>
                 <div class="col-md-7">
-                    <input type="text" name="CTC" class="form-control" ng-model="email" placeholder="Email" required />
+                    <input type="text" name="CTC" class="form-control"  placeholder="CTC" required />
                 </div>
             </div>
         </div>
