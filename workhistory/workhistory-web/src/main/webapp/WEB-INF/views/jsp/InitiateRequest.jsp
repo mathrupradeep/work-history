@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<title>Initiate Request</title>
 	<style>
 		.wrapper {
 			width: 80%;
@@ -21,7 +22,7 @@
 </head>
 <body>
 	<div class="wrapper">
-	<h2>Initiate Request</h2>
+	<h3><strong>Initiate Request</strong></h3>
 
 	<c:if test="${not empty lists}">
 		<form name="requestInitatorForm" method="post">
