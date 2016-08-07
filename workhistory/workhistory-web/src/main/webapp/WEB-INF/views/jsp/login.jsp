@@ -14,7 +14,8 @@
 <h3>
 		<c:if test="${not empty message}">
 			${message}
-		</c:if>
+		</c:if> 
+		<br>
 	User Name &nbsp;<input type="text" name="userName" > <br>
 	Password &nbsp;<input type="password" name="password" > <br>
    <br>
