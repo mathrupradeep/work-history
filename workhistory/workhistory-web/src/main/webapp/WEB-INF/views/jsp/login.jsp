@@ -26,9 +26,9 @@
 						</label>
 					</div>
 				</div> --%>
-				<div>
+				   <div>
 					<h2 class="col-md-10">Login to Workhistory</h2>
-				</div>
+				   </div>
                    <div class="row">
                        <div class="form-group col-md-12">
                            <label class="col-md-2 control-label">Email ID</label>

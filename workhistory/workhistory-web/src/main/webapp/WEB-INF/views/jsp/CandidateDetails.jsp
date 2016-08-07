@@ -11,6 +11,13 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+    .wrapper {
+        margin: 20px auto;
+    }
+</style>
+
 <script>
 $(document).ready(function () {
     $("#imagePic").mouseenter(function () {
@@ -32,48 +39,121 @@ $(document).ready(function () {
 </head>
 <body>
 
-<form name="candidateForm" method="post">
-	<div>
-		<c:if test="${not empty msg}">
-			 ${msg}
-		</c:if>
-	</div>
-		First Name &nbsp;<input type="text" name="firstName"> <br>
-		Last Name &nbsp; <input type="text" name="lastName"> <br>
-		DOB &nbsp; <input type="date" id="DOBSelector" name="DOB"> <br>
-		
-			<!-- Email ID &nbsp; <input type="text" name="mailId"> <div id ="imagePic" > Put an image I here <div id="infoElement" >  if the email id is incorrect, contact HR1 </div> </div>
-    Primary Phone Number &nbsp; <input type="text" name="primaryPhoneNumber"> <div id ="imagePic" > Put an image I here <div id="infoElement" >  if the number is incorrect, contact HR1 </div> </div> -->
-
-		Select the previous employer &nbsp  
-		<select name="previousEmployer">
-		     <c:forEach var="listValue" items="${CandidateCompany}">
-                <option name="previousEmployer" value="${listValue.id}">${listValue.regCompanyName}<br>
-            </c:forEach>
-		</select>
-
-
+<div class="container">
+    <div class="wrapper">
+        <form name="authForm" ng-controller="authCtrl" method="post" id="loginForm" class="form-horizontal">
+		<div>
+			<c:if test="${not empty msg}">
+				 ${msg}
+			</c:if>
+		</div>
+	    <div>
+            <h2 class="col-md-10">Please enter Candidate Details</h2>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-2 control-label">First Name</label>
+                <div class="col-md-7">
+                    <input type="text" name="firstName" class="form-control" ng-model="email" placeholder="Email" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-2 control-label">Last Name</label>
+                <div class="col-md-7">
+                    <input type="text" name="firstName" class="form-control" ng-model="email" placeholder="Email" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-2 control-label">First Name</label>
+                <div class="col-md-7">
+                    <input type="text" name="lastName" class="form-control" ng-model="email" placeholder="Email" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-2 control-label">DOB</label>
+                <div class="col-md-7">
+                    <input type="date" name="DOB" class="form-control" ng-model="email" placeholder="Date" required />
+                </div>
+            </div>
+        </div>
+       <!-- Manju should do -->
+       
+       
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-2 control-label">Select the previous employer</label>
+                <div class="col-md-7">
+                    <select class="form-control" name="previousEmployer">
+                        <c:forEach var="listValue" items="${CandidateCompany}">
+                            <option name="previousEmployer" value="${listValue.id}">${listValue.regCompanyName}<br>
+                        </c:forEach>
+                    </select>
+                </div>
+            </div>
+        </div>		
     		<!-- <INPUT type="button" value="Add Row" onclick="addRow('compDetails')" />  
     <INPUT type="button" value="Delete Row" onclick="deleteRow('compDetails')" /> 
    <table id="compDetails">
     <tr>
-    --> </br>
-
-		EMP ID &nbsp; <input type="text" name="employeeId"> <br>
-		Joining Date &nbsp; <input type="text" id="joiningDate"			name="joiningDate"> <br> Relieving Date &nbsp; <input
-				type="text" id="relievingDate" name="relievingDate"> <br>
-			Designation &nbsp; <input type="text" id="designation"
-				name="designation"> <br> CTC &nbsp; <input type="text"
-				id="CTC" name="CTC"> <br>
+    -->
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-2 control-label">EMP ID</label>
+                <div class="col-md-7">
+                    <input type="text" name="employeeId" class="form-control" ng-model="email" placeholder="Email" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-2 control-label">Joining Date</label>
+                <div class="col-md-7">
+                    <input type="date" name="joiningDate" class="form-control" ng-model="email" placeholder="Email" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-2 control-label"> Relieving Date</label>
+                <div class="col-md-7">
+                    <input type="date" name="relievingDate" class="form-control" ng-model="email" placeholder="Email" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-2 control-label">Designation</label>
+                <div class="col-md-7">
+                    <input type="text" name="designation" class="form-control" ng-model="email" placeholder="Email" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-2 control-label">CTC</label>
+                <div class="col-md-7">
+                    <input type="text" name="CTC" class="form-control" ng-model="email" placeholder="Email" required />
+                </div>
+            </div>
+        </div>
 			<!-- Upload Relieving letter in PDF format &nbsp; <input type="file" id="relievingLetterPDF"  name="relievingLetterPDF" > </br> </td> -->
 			<!-- </tr>
    </table>
     -->
-			<br> <br> <input type="submit" value="Submit"
-				onclick="submitCandidateDetails()"> <input type="reset"
-				value="Clear">
-		
-</form>
+    
+         <div>
+            <div class="form-actions pull-right col-md-10 col-lg-10">
+                 <input type="submit" class="btn btn-primary" value="Submit" onclick="submitCandidateDetails()" />
+                 <input type="reset" class="btn btn-primary" value="Clear" />
+            </div>
+        </div>
+    </form>
 </body>
 
 <script>
