@@ -116,4 +116,5 @@ function submitCandidateDetails() {
 }   
 
 </script>
+<%@ include file="logout.jsp" %>
 </html>     

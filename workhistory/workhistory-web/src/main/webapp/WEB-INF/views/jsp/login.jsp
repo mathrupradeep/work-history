@@ -60,19 +60,6 @@
                </form>		
 	</div>
 </div>
-<%-- <form class="form-horizontal" method="post" id="loginForm">
-<br>
-<h3>
-		<c:if test="${not empty message}">
-			${message}
-		</c:if>
-	<label class="">User Name</label><input type="text" name="userName" > <br>
-	Password &nbsp;<input type="password" name="password" > <br>
-   <br>
-   <input type="submit" value="Login" onclick="submitLogin()">
-   <input type="reset" value="Clear">
-</h3>
-</form> --%>
 </body>
 <script>
 function submitLogin(){
