@@ -28,10 +28,10 @@
 	                    <th>First Name</th>
 	                    <th>Last Name</th>
 	                    <th>DOB</th>
-	                    <th>Prev Employeer</th>
+	                    <th>Previous Employer</th>
 	                    <th>Employee Id</th>
 	                    <th>Joining date</th>
-	                    <th>Reliving date</th>
+	                    <th>Relieving date</th>
 	                    <th>Designation</th>
 	                    <th>CTC</th>
 	                </tr>
@@ -43,9 +43,9 @@
 	                    <td> ${existingCandDetails.birthDate} </td>
 	                    <td> ${existingCandEmpDetails.approverCompany.regCompanyName} </td>
 	                    <td> ${existingCandEmpDetails.employeeId}  </td>
-	                    <td>  ${existingCandEmpDetails.joiningDate} </td>
+	                    <td> ${existingCandEmpDetails.joiningDate} </td>
 	                    <td> ${existingCandEmpDetails.relievingDate} </td>
-	                    <td>${existingCandEmpDetails.designation} </td>
+	                    <td> ${existingCandEmpDetails.designation} </td>
 	                    <td> ${existingCandEmpDetails.salary} </td>
 	                </tr>
 	            </tbody>
