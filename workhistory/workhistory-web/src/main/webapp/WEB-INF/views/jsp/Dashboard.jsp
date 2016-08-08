@@ -14,17 +14,26 @@
 <title>Dashboard</title>
 </head>
 <body style="background: #ececec" class="wrapper">
+	<div>
+	   <c:if test="${not empty msg}">
+          <label>${msg}</label>
+	  </c:if>
+	</div>
+	
 	<c:if test="${not empty firstName}">
 		<div><h3 class="col-md-2 control-label">Welcome ${firstName}!</h3></div>
 	</c:if>
-    <form class="form-horizontal">
-    	<div class="form-group col-md-12">
-        <input type="submit" class="btn btn-primary" value="Add Candidate" onclick="addCandidate()">
-        <input type="submit" class="btn btn-primary" value="Request Queue" onclick="requestQueue()">
-        <input type="submit" class="btn btn-primary" value="Transaction History" onclick="openAllTransactions()">
-        <input type="submit" class="btn btn-primary"  value="Pending Approval" onclick="verificationQueue()">
-        </div>
-    </form>
+	<br>
+    <div>
+	    <form class="form-horizontal">
+	    	<div class="form-group col-md-12">
+	        <input type="submit" class="btn btn-primary" value="Add Candidate" onclick="addCandidate()">
+	        <input type="submit" class="btn btn-primary" value="Request Queue" onclick="requestQueue()">
+	        <input type="submit" class="btn btn-primary" value="Transaction History" onclick="openAllTransactions()">
+	        <input type="submit" class="btn btn-primary"  value="Pending Approval" onclick="verificationQueue()">
+	        </div>
+	    </form>
+    </div>
 </body>
 
 <script>
@@ -33,19 +42,16 @@
         document.forms[0].submit();
     }
     
-    //action path needs to be set 
     function requestQueue() {
         document.forms[0].action = "${pageContext.request.contextPath}/initiateRequest";
         document.forms[0].submit();
     }
     
-    //action path needs to be set
     function openAllTransactions() {
         document.forms[0].action = "${pageContext.request.contextPath}/listTransactions";
         document.forms[0].submit();
     }
     
-    //action path needs to be set
     function verificationQueue() {
         document.forms[0].action = "${pageContext.request.contextPath}/listTransactionsForAction";
         document.forms[0].submit();
