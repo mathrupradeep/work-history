@@ -24,7 +24,7 @@
 		</c:if>
 	</div>
 
-	<form name="addCandidateForm" id="candidateForm" method="post" class="form-horizontal">
+	<form name="addCandidateForm" id="candidateForm" method="post" ng-controller="authCtrl" class="form-horizontal">
 	   <div class="row">
        	<div class="form-group col-md-12">
        	
@@ -38,7 +38,7 @@
        	<div class="form-group col-md-12">
           <label class="col-md-2 control-label">Phone number</label>
           	<div class="col-md-7">
-           		<input type="number" name="phoneNumber" class="form-control" ng-model="email" placeholder="Phone number" required />
+           		<input type="number" name="phoneNumber" class="form-control" ng-model="phoneNumber" placeholder="Phone number" required />
            	</div>
            </div>
          </div>

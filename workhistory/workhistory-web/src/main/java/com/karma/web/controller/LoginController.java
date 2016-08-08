@@ -52,7 +52,7 @@ public class LoginController {
 			/* display details of the candidates who's details are already entered into the DB,
 			Based on Candidate ID*/
 			List<RequestQueue> listOfCandidateIds = requestQueueService.getCandIdInRequestQueue(user.getId());
-			System.out.println(listOfCandidateIds);
+			
 			if(listOfCandidateIds != null && listOfCandidateIds.size()>0){
 			    model.setViewName("displayExistingCandDetails");
 			    model.addObject("existingCandEmpDetails", listOfCandidateIds.get(0));
