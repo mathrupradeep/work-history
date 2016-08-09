@@ -77,4 +77,5 @@ function submitrequestInitatorForm() {
 } 
 </script>
 <%@ include file="logout.jsp" %>
+<%@ include file="dashboardLink.jsp" %>
 </html>

@@ -26,8 +26,8 @@ insert into workhistory.company values
 (56, 'alias',null, 'Fransico Partners', 455, null);
 
 insert into workhistory.user values 
-(1,null, 'vikramk.cs@gmail.com','vikram','kolla','admin123',4354354353,null,'HR', 54);
+(1,null, 'hr@Crizalkarma.com','vikram','kolla','admin123',4354354353,null,'HR', 54);
 
 insert into workhistory.user values 
-(2,null, 'mathrupradeep@gmail.com','pradeep','mathru','admin123',984934,null,'HR', 56);
+(2,null, 'hr@FransicoKarma.com','pradeep','mathru','admin123',984934,null,'HR', 56);
 

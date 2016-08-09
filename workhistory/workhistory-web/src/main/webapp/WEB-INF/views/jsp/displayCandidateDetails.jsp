@@ -11,6 +11,13 @@
     .wrapper {
         margin: 20px auto;
     }
+    	body {
+			background: #ececec;
+		}
+	.table td {
+			text-align: center;
+			background: #fff;
+		}
 </style>
 </head>
 <body>
@@ -22,7 +29,7 @@
         </div>
         <form name="authForm" ng-controller="authCtrl" method="post" id="loginForm" class="form-horizontal">
         <div>
-             <table class="table table-bordered">
+             <table class="table table-bordered table-condensed"">
                 <thead>
                     <tr>
                         <th>First Name</th>

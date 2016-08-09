@@ -42,7 +42,7 @@ public class WorkHistoryTransactionController {
 	@RequestMapping("submitApprovedTransaction")
 	public ModelAndView submitApprovedTransaction(HttpServletRequest request,@RequestParam Long[] transactionIds,@RequestParam Long[] requestQueueIds){
 
-		for( int i = 0; i < requestQueueIds.length; i++)
+		for( int i = 0; i < transactionIds.length; i++)
 		{
 		    Long requestQueueId = requestQueueIds[i];
 		    Long transactionId = transactionIds[i];
@@ -54,7 +54,7 @@ public class WorkHistoryTransactionController {
 	
 		ModelAndView model = new ModelAndView();
 		model.setViewName("Dashboard");
-		model.addObject("lists", null);
+		model.addObject("msg", "Transaction Approved Sucessfully");
 		return model;
 	}
 	
@@ -73,7 +73,7 @@ public class WorkHistoryTransactionController {
 	
 		ModelAndView model = new ModelAndView();
 		model.setViewName("Dashboard");
-		model.addObject("lists", null);
+		model.addObject("msg", "Transaction Rejected Sucessfully");
 		return model;
 	}
 	
@@ -107,6 +107,18 @@ public class WorkHistoryTransactionController {
 		User userData = (User) request.getSession().getAttribute("LOGGEDIN_USER");
 		Company company = userData.getCompany();
 		List<WorkHistoryTransaction> transactionList = workHistoryTransactionService.getWorkHistoryTransactinofCompany(TransactionStatus.valueOf("Rejected").toString(),company);
+		ModelAndView model = new ModelAndView();
+		model.setViewName("transactionsList");
+		model.addObject("lists", transactionList);
+		return model;
+	}
+	
+	@RequestMapping("listAllPendingTransactions")
+	public ModelAndView listAllPendingTransactions(HttpServletRequest request){
+		
+		User userData = (User) request.getSession().getAttribute("LOGGEDIN_USER");
+		Company company = userData.getCompany();
+		List<WorkHistoryTransaction> transactionList = workHistoryTransactionService.getWorkHistoryTransactinofCompany(TransactionStatus.valueOf("Pending").toString(),company);
 		ModelAndView model = new ModelAndView();
 		model.setViewName("transactionsList");
 		model.addObject("lists", transactionList);

@@ -12,6 +12,9 @@
 	.wrapper {
 		margin: 40px auto;
 	}
+	body {
+			background: #ececec;
+		}
 </style>
 </head>
 <body>
@@ -58,4 +61,6 @@
 		document.forms[0].submit();
 	}
 </script>
+<%@ include file="logout.jsp" %>
+<%@ include file="dashboardLink.jsp" %>
 </html>

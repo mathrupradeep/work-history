@@ -46,7 +46,7 @@ public class SendEmail {
 	    	//User candidate = new User();
 		//String[] toEmails = { "indianvicky91@gmail.com" };
 		String emailSubject = "Welcome to WorkHistory!";
-		String emailBody = "\nHi there, Your account has been created with WorkHistory.Login and fillout your details."+"\n"+"The details are: \n User Name: "+candidate.getEmailId()+"\nPassword: admin123"+"\n";
+		String emailBody = "\nHi there, Your account has been created with WorkHistory.Login and fillout your details."+"\n"+"\nThe details are: \n User Name: "+candidate.getEmailId()+"\nPassword: admin123"+"\n";
 
 		mailSession = Session.getDefaultInstance(emailProperties, null);
 		emailMessage = new MimeMessage(mailSession);
@@ -66,15 +66,14 @@ public class SendEmail {
 	public void sendEmail() throws AddressException, MessagingException {
 
 		String emailHost = "smtp.gmail.com";
-		String fromUser = "kkollak91";//just the id alone without @gmail.com
-		String fromUserEmailPassword = "smtpmail";
+		String fromUser = "karma.workhistory";//just the id alone without @gmail.com
+		String fromUserEmailPassword = "pradeepvikram123";
 
 		Transport transport = mailSession.getTransport("smtp");
 
 		transport.connect(emailHost, fromUser, fromUserEmailPassword);
 		transport.sendMessage(emailMessage, emailMessage.getAllRecipients());
 		transport.close();
-		System.out.println("Email sent successfully.");
 	}
 
 }

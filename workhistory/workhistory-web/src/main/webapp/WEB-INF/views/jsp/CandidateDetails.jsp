@@ -16,6 +16,9 @@
     .wrapper {
         margin: 20px auto;
     }
+    	body {
+			background: #ececec;
+		}
 </style>
 
 <script>
