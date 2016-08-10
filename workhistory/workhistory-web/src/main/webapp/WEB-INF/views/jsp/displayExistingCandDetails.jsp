@@ -24,9 +24,11 @@
 
 <div class="container">
     <div class="wrapper">
+    <br>
         <div> 
             <label class="col-md-7">Thanks for coming back! Here are the details entered by you: </label> <br>
         </div>
+        <br>
         <form name="authForm" ng-controller="authCtrl" method="post" id="loginForm" class="form-horizontal">
 	    <div>
 	         <table class="table table-bordered table-condensed"">

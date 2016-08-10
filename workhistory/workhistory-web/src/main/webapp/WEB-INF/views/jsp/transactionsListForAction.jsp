@@ -22,13 +22,14 @@
 <div class="wrapper">
 	<h3><strong>Pending Transactions</strong></h3>
 
-	<c:if test="${not empty lists}">
-		<form name="requestInitatorForm" method="post">
+    <form name="requestInitatorForm" method="post">
+    	<c:if test="${not empty lists}">
+		
 		<table class="table table-bordered table-condensed">
             <thead>
                 <tr>
                     <th>Transaction</th>
-                    <th>Emp Id</th>
+                    <th>Employee Id</th>
                     <th>Candidate Name</th>
                     <th>Joining Date</th>
                     <th>Reliving date</th>

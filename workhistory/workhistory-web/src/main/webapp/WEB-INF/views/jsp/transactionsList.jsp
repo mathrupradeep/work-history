@@ -59,9 +59,9 @@
 			
 		</table>	
 	</c:if>
+	<!-- <br>
+     <br> -->
      <c:if test="${empty lists}">
-     <br>
-     <br>
     	<h4>No records Found</h4>
      </c:if>
 	</form>
