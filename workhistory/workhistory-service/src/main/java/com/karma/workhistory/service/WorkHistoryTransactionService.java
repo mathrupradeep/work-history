@@ -44,12 +44,13 @@ public class WorkHistoryTransactionService {
 			return queuelist;
 	    }
 
-	public void updateTransactionStatusOnId(String status, Long transactionId, User companyUser) {
+	public WorkHistoryTransaction updateTransactionStatusOnId(String status, Long transactionId, User companyUser) {
 		WorkHistoryTransaction workHistoryTransaction = hibernateUtil.find(WorkHistoryTransaction.class,transactionId);
 		workHistoryTransaction.setStatus(status);
 		workHistoryTransaction.setApproverCompanyHr(companyUser);
 		workHistoryTransaction.setChangeDate(new Date());
 		hibernateUtil.update(WorkHistoryTransaction.class, workHistoryTransaction);
+		return workHistoryTransaction;
 		
 	}
 	

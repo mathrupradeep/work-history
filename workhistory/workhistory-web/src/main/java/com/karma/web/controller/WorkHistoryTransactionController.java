@@ -40,14 +40,13 @@ public class WorkHistoryTransactionController {
 	}
 	
 	@RequestMapping("submitApprovedTransaction")
-	public ModelAndView submitApprovedTransaction(HttpServletRequest request,@RequestParam Long[] transactionIds,@RequestParam Long[] requestQueueIds){
+	public ModelAndView submitApprovedTransaction(HttpServletRequest request,@RequestParam Long[] transactionIds){
 
 		for( int i = 0; i < transactionIds.length; i++)
 		{
-		    Long requestQueueId = requestQueueIds[i];
 		    Long transactionId = transactionIds[i];
 		    User companyUser = (User) request.getSession().getAttribute("LOGGEDIN_USER");
-		    workHistoryTransactionService.updateTransactionStatusOnId(TransactionStatus.valueOf("Approved").toString(),transactionId,companyUser);
+		    Long requestQueueId= workHistoryTransactionService.updateTransactionStatusOnId(TransactionStatus.valueOf("Approved").toString(),transactionId,companyUser).getRequestQueue().getId();
 		    requestQueueService.updateStatusOnId(requestQueueId,RequestStatus.valueOf("Completed").toString());
 
 		}
@@ -59,14 +58,13 @@ public class WorkHistoryTransactionController {
 	}
 	
 	@RequestMapping("submitRejectedTransaction")
-	public ModelAndView submitRejectedTransaction(HttpServletRequest request,@RequestParam Long[] transactionIds,@RequestParam Long[] requestQueueIds){
+	public ModelAndView submitRejectedTransaction(HttpServletRequest request,@RequestParam Long[] transactionIds){
 
-		for( int i = 0; i < requestQueueIds.length; i++)
+		for( int i = 0; i < transactionIds.length; i++)
 		{
-		    Long requestQueueId = requestQueueIds[i];
 		    Long transactionId = transactionIds[i];
 		    User companyUser = (User) request.getSession().getAttribute("LOGGEDIN_USER");
-		    workHistoryTransactionService.updateTransactionStatusOnId(TransactionStatus.valueOf("Rejected").toString(),transactionId,companyUser);
+		    Long requestQueueId = workHistoryTransactionService.updateTransactionStatusOnId(TransactionStatus.valueOf("Rejected").toString(),transactionId,companyUser).getRequestQueue().getId();
 		    requestQueueService.updateStatusOnId(requestQueueId,RequestStatus.valueOf("Completed").toString());
 
 		}

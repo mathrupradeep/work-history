@@ -54,17 +54,11 @@
             </tbody>
             </c:forEach>
          </table>
-		<%-- <ul>
-			<c:forEach var="listValue" items="${lists}">
-				<li><input type="checkbox" name="requestQueueIds" value="${listValue.id}">${listValue.id},${listValue.approverCompany.regCompanyName},${listValue.employeeId},
-				${listValue.user.firstName} ${listValue.user.lastName}, ${listValue.joiningDate},${listValue.relievingDate},${listValue.designation}</li>
-			</c:forEach>
-		</ul> --%>
 	   <input type="submit" value="Submit" class="btn btn-primary" onclick="submitrequestInitatorForm()">
        <input type="reset" class="btn btn-primary" value="Clear">
 	</c:if>
      <c:if test="${empty lists}">
-     	No records Found
+     	<h4>No records Found</h4>
      </c:if>
 	</form>
 	

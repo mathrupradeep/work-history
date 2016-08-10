@@ -39,8 +39,7 @@
 			<c:forEach var="listValue" items="${lists}">
 			<tbody>
 			<tr>
-				<td><input type="checkbox" name="transactionIds" value="${listValue.id}">${listValue.id}<br>
-				<input type="hidden" name="requestQueueIds" value="${listValue.requestQueue.id}"></td>
+				<td><input type="checkbox" name="transactionIds" value="${listValue.id}">${listValue.id}</td>
 				<td>${listValue.requestQueue.employeeId}</td>
 				<td>${listValue.requestQueue.user.firstName} ${listValue.requestQueue.user.lastName}</td>
 				<td>${listValue.requestQueue.joiningDate}</td>
