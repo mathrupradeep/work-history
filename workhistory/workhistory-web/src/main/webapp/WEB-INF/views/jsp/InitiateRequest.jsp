@@ -23,15 +23,15 @@
 <body>
 	<div class="wrapper">
 	<h3><strong>Initiate Request</strong></h3>
-
+    <form name="requestInitatorForm" method="post">
 	<c:if test="${not empty lists}">
-		<form name="requestInitatorForm" method="post">
+		
 			<table class="table table-bordered table-condensed">
             <thead>
                 <tr>
                     <th>Request</th>
                     <th>Previous Employer</th>
-                    <th>Emp Id</th>
+                    <th>Employee Id</th>
                     <th>Candidate Name</th>
                     <th>Joining Date</th>
                     <th>Reliving date</th>
@@ -62,7 +62,7 @@
      </c:if>
 	</form>
 	
-</div>
+    </div>
 </body>
 <script>
 function submitrequestInitatorForm() {

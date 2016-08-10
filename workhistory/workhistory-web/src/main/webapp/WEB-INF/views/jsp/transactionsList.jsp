@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<title>Pending Transactions</title>
+	<title>List of Transactions</title>
 	<style>
 		.wrapper {
 			width: 80%;
@@ -26,6 +26,8 @@
     <input type="submit" value="Pending Transactions" onclick="getAllPendingTransactions()" class="btn btn-primary">
     <input type="submit" value="Approved Transactions" onclick="getAllApprovedTransactions()" class="btn btn-primary">
     <input type="submit" value="Rejected Transactions" onclick="getAllRejectedTransactions()" class="btn btn-primary">
+    
+    <br><br>
     
 	<c:if test="${not empty lists}">	
 		<table class="table table-bordered table-condensed">
@@ -57,9 +59,9 @@
 			
 		</table>	
 	</c:if>
+	<!-- <br>
+     <br> -->
      <c:if test="${empty lists}">
-     <br>
-     <br>
     	<h4>No records Found</h4>
      </c:if>
 	</form>

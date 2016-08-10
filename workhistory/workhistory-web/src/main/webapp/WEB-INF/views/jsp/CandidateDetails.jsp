@@ -108,7 +108,7 @@ $(document).ready(function () {
             <div class="form-group col-md-12">
                 <label class="col-md-2 control-label">Joining Date</label>
                 <div class="col-md-7">
-                    <input type="text" name="joiningDate" id="joiningDate" class="form-control"  />
+                    <input type="text" name="joiningDate" id="joiningDate" class="form-control" placeholder="Date" />
                 </div>
             </div>
         </div>
@@ -116,7 +116,7 @@ $(document).ready(function () {
             <div class="form-group col-md-12">
                 <label class="col-md-2 control-label"> Relieving Date</label>
                 <div class="col-md-7">
-                    <input type="text" name="relievingDate" id="relievingDate" class="form-control"  />
+                    <input type="text" name="relievingDate" id="relievingDate" class="form-control" placeholder="Date" />
                 </div>
             </div>
         </div>

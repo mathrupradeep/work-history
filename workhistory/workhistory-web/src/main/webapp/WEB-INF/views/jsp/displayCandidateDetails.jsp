@@ -25,8 +25,9 @@
 <div class="container">
     <div class="wrapper">
         <div> 
-            <label class="col-md-7"> Thanks for your time! <br> Here are the details entered by you: </label> <br>
+            <label class="col-md-7"> Thanks for your time! No further actions required. <br> Here are the details entered by you: </label> <br>
         </div>
+        <br>    <br>
         <form name="authForm" ng-controller="authCtrl" method="post" id="loginForm" class="form-horizontal">
         <div>
              <table class="table table-bordered table-condensed"">
@@ -34,7 +35,7 @@
                     <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>DOB</th>
+                        <th align = "justify">DOB</th>
                         <th>Previous Employer</th>
                         <th>Employee Id</th>
                         <th>Joining date</th>
