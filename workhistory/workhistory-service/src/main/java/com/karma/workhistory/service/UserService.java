@@ -1,5 +1,7 @@
 package com.karma.workhistory.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,10 +35,17 @@ public class UserService {
 		}
 		if (valid) {
 			Search serachCriteria = new Search(User.class);
+			User object = null;
+			
 			serachCriteria.addFilterEqual("emailId", user.getEmailId());
-			serachCriteria.addFilterEqual("phoneNumber", user.getPhoneNumber());
-			hibernateUtil.setSessionFactory(hibernateUtil.getsessionFactory());
-			User object = (User) hibernateUtil.searchUnique(serachCriteria);
+			object =(User) hibernateUtil.searchUnique(serachCriteria);
+			 
+			if(object == null){
+				serachCriteria.clear();
+				serachCriteria.addFilterEqual("phoneNumber", user.getPhoneNumber());
+				object =(User) hibernateUtil.searchUnique(serachCriteria);
+			}
+			
 			if (object == null) {
 				try {
 					hibernateUtil.save(User.class, user);
@@ -44,6 +53,9 @@ public class UserService {
 					e.printStackTrace();
 					result = e.getMessage();
 				}
+			}
+			else{
+				result = "This candidate already exists. Either candidate's phone number/email id is in Database";
 			}
 		}
 

@@ -73,9 +73,7 @@ public class CandidateController {
 			message = "Candidate Added Sucessfully & Email will be sent";
 			sendEmail.sendEmailFunction(candidate);
 		}
-		else{
-			message = "Error adding candidate";
-		}
+
 		ModelAndView model = dashboardController.displayDashboard(request);
 		model.addObject("msg", message);
 		model.setViewName("Dashboard");
