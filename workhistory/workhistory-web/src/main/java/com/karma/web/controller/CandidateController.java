@@ -35,6 +35,9 @@ public class CandidateController {
 	
 	@Autowired
 	private RequestInitiatorService requestInitiatorService;
+	
+	@Autowired
+	private DashboardController dashboardController;
 
 	@RequestMapping(value = "/addCandidate")
 	public ModelAndView getAddCandidate() {
@@ -49,7 +52,7 @@ public class CandidateController {
 			@RequestParam("mailId") String mailId,
 			@RequestParam("phoneNumber") String phoneNumber,HttpServletRequest request) throws AddressException, MessagingException {
 
-		ModelAndView model = new ModelAndView();
+		
 		User hr = (User) request.getSession().getAttribute("LOGGEDIN_USER");
 		String hrMailId = hr.getEmailId();
 		User candidate = new User();
@@ -70,8 +73,10 @@ public class CandidateController {
 			message = "Candidate Added Sucessfully & Email will be sent";
 			sendEmail.sendEmailFunction(candidate);
 		}
-		else
+		else{
 			message = "Error adding candidate";
+		}
+		ModelAndView model = dashboardController.displayDashboard(request);
 		model.addObject("msg", message);
 		model.setViewName("Dashboard");
 		return model;
@@ -137,4 +142,5 @@ public class CandidateController {
 		return model;
 
 	}
+
 }

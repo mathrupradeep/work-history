@@ -27,6 +27,9 @@ public class WorkHistoryTransactionController {
 	@Autowired
 	WorkHistoryTransactionService workHistoryTransactionService;
 	
+	@Autowired
+	private DashboardController dashboardController;
+	
 	@RequestMapping("listTransactionsForAction")
 	public ModelAndView getList(HttpServletRequest request){
 		
@@ -51,7 +54,7 @@ public class WorkHistoryTransactionController {
 
 		}
 	
-		ModelAndView model = new ModelAndView();
+		ModelAndView model = dashboardController.displayDashboard(request);
 		model.setViewName("Dashboard");
 		model.addObject("msg", "Transaction Approved Sucessfully");
 		return model;
@@ -69,7 +72,7 @@ public class WorkHistoryTransactionController {
 
 		}
 	
-		ModelAndView model = new ModelAndView();
+		ModelAndView model = dashboardController.displayDashboard(request);
 		model.setViewName("Dashboard");
 		model.addObject("msg", "Transaction Rejected Sucessfully");
 		return model;

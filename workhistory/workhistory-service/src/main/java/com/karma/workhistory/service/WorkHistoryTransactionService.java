@@ -24,6 +24,8 @@ public class WorkHistoryTransactionService {
 	@Autowired
 	private RequestQueueService requestQueueService;
 	
+	
+	
 	@Transactional
 	public void createTransaction(Long requestQueueId,User companyUser){
 		 WorkHistoryTransaction transaction = new WorkHistoryTransaction();

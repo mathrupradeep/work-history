@@ -24,14 +24,17 @@ import com.karma.workhistory.service.util.UserType;
 public class LoginController {
 
 	@Autowired
-	UserService userService;
+	private UserService userService;
 	
 	@Autowired
 	private CompanyService companyService;
 	
 	@Autowired
-	RequestQueueService requestQueueService;
+	private RequestQueueService requestQueueService;
 	
+	@Autowired
+	private DashboardController dashboardController;
+		
 
 	@RequestMapping(value = "/submitLoginDetails", method = RequestMethod.POST)
 	public ModelAndView submitLogin(@RequestParam("userName") String userName,
@@ -64,8 +67,11 @@ public class LoginController {
 			break;
 
 		    case HR :
+		    List<Integer> queueAndTransactionSize = dashboardController.getQueueAndTransactionSize(user, user.getCompany());
 			model.setViewName("Dashboard");
 			model.addObject("firstName", user.getFirstName());
+			model.addObject("queueSize",queueAndTransactionSize.get(0));
+			model.addObject("transactionListSize",queueAndTransactionSize.get(1));
 			request.getSession().setAttribute("LOGGEDIN_USER", user);
 			break;
 			
@@ -86,5 +92,13 @@ public class LoginController {
 	@RequestMapping(value = "/login")
 	public String printWelcome(ModelMap model) {
             return "login";
+	}
+
+	public DashboardController getDashboardController() {
+		return dashboardController;
+	}
+
+	public void setDashboardController(DashboardController dashboardController) {
+		this.dashboardController = dashboardController;
 	}
 }

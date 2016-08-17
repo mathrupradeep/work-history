@@ -21,16 +21,16 @@
 	</div>
 	
 	<c:if test="${not empty firstName}">
-		<div><h3 class="col-md-2 control-label">Welcome ${firstName}!</h3></div>
+		<div><h3>Welcome ${firstName}!</h3></div>
 	</c:if>
 	<br>
     <div>
 	    <form class="form-horizontal">
 	    	<div class="form-group col-md-12">
 	        <input type="submit" class="btn btn-primary" value="Add Candidate" onclick="addCandidate()">
-	        <input type="submit" class="btn btn-primary" value="Request Queue" onclick="requestQueue()">
+	        <input type="submit" class="btn btn-primary" value="Request Queue(${queueSize})" onclick="requestQueue()">
 	        <input type="submit" class="btn btn-primary" value="Transaction History" onclick="openAllTransactions()">
-	        <input type="submit" class="btn btn-primary"  value="Pending Approval" onclick="verificationQueue()">
+	        <input type="submit" class="btn btn-primary"  value="Pending Approval(${transactionListSize})" onclick="verificationQueue()">
 	        </div>
 	    </form>
     </div>

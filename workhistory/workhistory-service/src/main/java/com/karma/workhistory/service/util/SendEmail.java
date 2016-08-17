@@ -64,7 +64,8 @@ public class SendEmail {
 	}
 
 	public void sendEmail() throws AddressException, MessagingException {
-
+		
+		try{
 		String emailHost = "smtp.gmail.com";
 		String fromUser = "karma.workhistory";//just the id alone without @gmail.com
 		String fromUserEmailPassword = "pradeepvikram123";
@@ -74,6 +75,11 @@ public class SendEmail {
 		transport.connect(emailHost, fromUser, fromUserEmailPassword);
 		transport.sendMessage(emailMessage, emailMessage.getAllRecipients());
 		transport.close();
+		}
+		catch(Exception e){
+			System.out.println("Unable to send email");
+			e.printStackTrace();
+		}
 	}
 
 }
